@@ -1,0 +1,16 @@
+.fissoInAlto{
+    position: fixed;
+    background-color: greenyellow;
+
+}
+
+.relative{
+    position: relative;
+    float:right;
+    margin-right: 60px; 
+    z-index: 1;
+}
+
+body{
+    z-index:0;
+}

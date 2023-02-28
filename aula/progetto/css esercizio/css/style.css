@@ -1,0 +1,31 @@
+.box1{
+    width: 100px;
+    height: 100px;
+    background-color:green;
+}
+
+.box2{
+    width: 100px;
+    height: 100px;
+    background-color:red;
+}
+
+.box3{
+    width: 100px;
+    height: 100px;
+    background-color:blue;
+}
+
+p:hover{
+    background-color:rgb(238, 144, 222);
+}
+
+
+
+
+/*
+da provare con la classe in comune 
+p[class~="box"]:hover{
+    background-color:rgb(238, 144, 222);
+}  */
+

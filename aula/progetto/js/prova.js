@@ -1,0 +1,1 @@
+// js fara sempre la concatenazione se avviene un x + y e x o y e di tipo string 
