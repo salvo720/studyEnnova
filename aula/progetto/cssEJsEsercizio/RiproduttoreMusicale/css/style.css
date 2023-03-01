@@ -1,0 +1,39 @@
+#listSong{
+border:1px solid red;
+background-color: blue;
+width:480px;
+height:250px;
+display: grid;
+
+}
+
+div{
+    border-radius: 5%;
+}
+
+#selectedMedia{
+border:1px solid red;
+background-color: blue;
+width:480px;
+height:250px;
+display: grid;
+}
+
+video{
+    width: 200px;
+    height:100px;
+}
+
+#idvideo1 {
+    display:inline;
+    position: relative;
+    margin-left: 200px;
+    top:-170px;
+}
+
+#idvideo2 {
+    display:inline;
+    position: relative;
+    margin-left: 200px;
+    top:-170px;
+}
