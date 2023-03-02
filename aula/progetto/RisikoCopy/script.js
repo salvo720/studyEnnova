@@ -73,8 +73,7 @@ Army.prototype.risultati = [];
 async function battle() {
     // Eseguire la battaglia implementando il metondo launchDice
 
-    new Promise((reject, resolve) => {
-
+   
 
         for (let i = 0; i <= 2; i++) {
             army1.risultati.push(army1.launchDice());
@@ -88,22 +87,26 @@ async function battle() {
         }
 
 
-
+        console.log("dentro fight")
         // army 1 e da 0 a 2 e army2 e da 3 a 5
         let armata1 = 0
         for (let armate2 = 3; armate2 <= 5; armate2++) {
+            console.log(document.getElementsByClassName("quantity"));
 
             if (parseInt(soldati[armata1].innerText) > parseInt(soldati[armate2].innerText)) {
-                army1.quantity--;
+                army2.quantity--;
+                console.log(document.getElementsByClassName("quantity"));
+        console.log("army2 -- fight")
+
 
             } else if (parseInt(soldati[armata1].innerText) < parseInt(soldati[armate2].innerText)) {
-                army2.quantity--;
+                army1.quantity--;
+            console.log("army1 -- fight")
+
 
             }
             armata1++;
         }
-        resolve("promise eseguita con successo ")
-    })
 
 }
 
@@ -125,7 +128,7 @@ async function battle() {
 
             // Dopo la battaglia verificare la vittoria o la resa di una delle due armate e assegnare la vittoria
         ).catch(function (e) {
-            console.error("errore nella promise " + e.message)
+            console.error("errore nella promise " + e)
         });
     };
 

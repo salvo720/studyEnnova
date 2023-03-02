@@ -1,0 +1,126 @@
+/* // aggiunge border e padding ad un elemento  */
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+/* @media only screen and (min-width:768px) {
+    [class*="col-"]{
+        width:100%;
+    }
+} */
+
+/* seleziona tutti gli elementi che contengono col  */
+[class*="col"] {
+    background-color: blueviolet;
+    border: solid 2px red;
+    padding: 5px;
+    margin: 5px;
+}
+
+@media only screen and (min-width:768px) {
+    .col-1 {
+        width: 10%;
+    }
+
+    .col-2 {
+        width: 16%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33%;
+    }
+
+    .col-5 {
+        width: 41%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58%;
+    }
+
+    .col-8 {
+        width: 66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83%;
+    }
+
+    .col-11 {
+        width: 91%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+
+
+}
+
+
+@media only screen and (min-width:600px) {
+    .col-s-1 {
+        width: 10%;
+    }
+
+    .col-s-2 {
+        width: 16%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33%;
+    }
+
+    .col-s-5 {
+        width: 41%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58%;
+    }
+
+    .col-s-8 {
+        width: 66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83%;
+    }
+
+    .col-s-11 {
+        width: 91%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+
+
+}

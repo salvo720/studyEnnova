@@ -2,9 +2,12 @@
 	"folders": [
 		{
 			"path": ".."
+		},
+		{
+			"path": "../../testSitoWeb"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "progetto"
+		"liveServer.settings.multiRootWorkspaceName": "testSitoWeb"
 	}
 }

@@ -1,0 +1,19 @@
+/* @media only screen and (min-width:768px) {
+    [class*="col-"]{
+        width:100%;
+    }
+} */
+
+/* seleziona tutti gli elementi che contengono col  */
+[class*="col"] {
+    background-color: blueviolet;
+    border: solid 2px red;
+    padding: 5px;
+    margin: 5px;
+    overflow: hidden;
+}
+
+@media only screen and (min-width:768px) {}
+
+
+@media only screen and (min-width:600px) {}

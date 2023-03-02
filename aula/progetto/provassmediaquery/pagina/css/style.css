@@ -1,0 +1,65 @@
+/* // aggiunge border e padding ad un elemento  */
+* {
+    box-sizing: border-box;
+}
+
+.nav-left{
+    float:left;
+}
+
+.nav-right{
+    float:right;
+}
+
+
+/* @media only screen and (min-width:768px) {
+    [class*="col-"]{
+        width:100%;
+    }
+} */
+
+/* seleziona tutti gli elementi che contengono col  */
+[class*="col"] {
+    background-color: blueviolet;
+    border: solid 2px red;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.row{
+    display: inline-flex;
+    width:100%;
+}
+
+@media only screen and (min-width:768px) {
+    .col-3 {
+        width: 25%;
+    }
+    .col-6 {
+        width: 100%;
+    }
+    .col-12 {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width:600px) {
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-6 {
+        width: 100%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+
+
+}
+
+
+carrelo in js 
