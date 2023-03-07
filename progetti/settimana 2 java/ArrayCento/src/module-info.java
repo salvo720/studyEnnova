@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author salvo
- *
- */
-module ArrayCento {
-}
