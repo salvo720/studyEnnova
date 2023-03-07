@@ -1,0 +1,12 @@
+#  visual stuido file
+.vs/
+.vs_code/
+
+# maven 
+
+.mvc/
+
+# eclipse 
+
+.settings/
+.metadata/
