@@ -5,17 +5,24 @@ import java.util.Scanner;
 public class Rubrica {
 
 //	stampare il menu x per uscire 
-
 //	con switch case 
+
+	
+	String nome;
+	String cognome;
+	String citta;
+	String telefono;
+	String eta;
 
 	public static int numeroElementiInseriti = 0;
 
-//	nome cognome citta telefono
-	static String[][] rubrica = new String[100][4];
+	static String[][] rubrica = new String[100][5];
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
+		
 		// ArrayMultidimensionale
 
 		System.out.println(" premi x per terminare il programma ");
@@ -66,45 +73,52 @@ public class Rubrica {
 	 */
 
 	public static void inserismentoRecord() {
-		Scanner ks = new Scanner(System.in);
-		String nome;
-		String cognome;
-		String citta;
-		String telefono;
 
+		
+//		ugo rossi roma 123456 30
+//		ada bianchi pisa 34201 180
+		Scanner ks = new Scanner(System.in);
+		Rubrica rubrica = new Rubrica();
+		
 		System.out.println("Inserisci il suo nome ");
-		nome = ks.nextLine();
+		rubrica.nome = ks.nextLine();
 
 		System.out.println("Inserisci il suo cognome ");
-		cognome = ks.nextLine();
+		rubrica.cognome = ks.nextLine();
 
 		System.out.println("Inserisci la sua citta ");
-		citta = ks.nextLine();
+		rubrica.citta = ks.nextLine();
 
 		System.out.println("Inserisci il suo numero ");
-		telefono = ks.nextLine();
+		rubrica.telefono = ks.nextLine();
 
-		while (!nome.equalsIgnoreCase("fine")) {
+		System.out.println("Inserisci la sua eta ");
+		rubrica.eta = ks.nextLine();
+
+		while (!rubrica.nome.equalsIgnoreCase("fine")) {
 			if (numeroElementiInseriti != 0) {
 
 				System.out.println("Inserisci il suo nome ");
-				nome = ks.nextLine();
+				rubrica.nome = ks.nextLine();
 
 				System.out.println("Inserisci il suo cognome ");
-				cognome = ks.nextLine();
+				rubrica.cognome = ks.nextLine();
 
 				System.out.println("Inserisci la sua citta ");
-				citta = ks.nextLine();
+				rubrica.citta = ks.nextLine();
 
 				System.out.println("Inserisci il suo numero ");
-				telefono = ks.nextLine();
+				rubrica.telefono = ks.nextLine();
+
+				System.out.println("Inserisci la sua eta ");
+				rubrica.eta = ks.nextLine();
 			}
 
-			if (!nome.equals("fine")) {
-				rubrica[numeroElementiInseriti][0] = nome;
-				rubrica[numeroElementiInseriti][1] = cognome;
-				rubrica[numeroElementiInseriti][2] = citta;
-				rubrica[numeroElementiInseriti][3] = telefono;
+			if (!rubrica.nome.equals("fine")) {
+				rubrica.rubrica[numeroElementiInseriti][0] = rubrica.nome;
+				rubrica.rubrica[numeroElementiInseriti][1] = rubrica.cognome;
+				rubrica.rubrica[numeroElementiInseriti][2] = rubrica.citta;
+				rubrica.rubrica[numeroElementiInseriti][3] = rubrica.telefono;
 				numeroElementiInseriti = numeroElementiInseriti + 1;
 			}
 
@@ -165,9 +179,11 @@ public class Rubrica {
 				System.out.println(" nome  " + rubrica[i][0].toUpperCase().charAt(0)
 						+ rubrica[i][0].substring(1, rubrica[i][0].length()) + " cognome : "
 						+ rubrica[i][1].toUpperCase().charAt(0) + rubrica[i][1].substring(1, rubrica[i][1].length())
-						+ " citta :" + rubrica[i][1].toUpperCase() + "telefono : " + rubrica[i][3]);
+						+ " citta :" + rubrica[i][1].toUpperCase() + "telefono : " + rubrica[i][3] + rubrica[i][4]);
 			}
 		}
 	}
 
 }
+
+// creare un file di nome prova.txt e scrivere dentro la stringa buona notte ;
