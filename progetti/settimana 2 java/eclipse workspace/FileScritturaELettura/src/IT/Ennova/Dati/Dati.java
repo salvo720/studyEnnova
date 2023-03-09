@@ -11,6 +11,17 @@ public class Dati {
 	private String telefono;
 	private boolean errore;
 
+	
+	
+	public Dati(String nome, String cognome, String citta, String telefono, boolean errore) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.citta = citta;
+		this.telefono = telefono;
+		this.errore = errore;
+	}
+
 	public String getNome() {
 		return nome;
 	}
