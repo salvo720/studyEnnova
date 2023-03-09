@@ -58,6 +58,10 @@ public class DbBusiness {
 	}
 
 	public static void StampaClienti(Connection connDb) {
+		
+		Cliente[] clienteArray = new Cliente[100];
+		
+		
 
 		try {
 
@@ -66,9 +70,15 @@ public class DbBusiness {
 			Query = "Select nome , cognome From \"Cliente\"";
 			Statement st = connDb.createStatement();
 			ResultSet rs = st.executeQuery(Query);
-
-			while (rs.next()) {
-				System.out.println(rs.getString(1) + " " + rs.getString(2));
+			
+			
+			int index = 0;
+			while (rs.next() && index< 100) {
+//				System.out.println(rs.getString(1) + " " + rs.getString(2));
+				clienteArray[index] =new Cliente(rs.getString(1) ,rs.getString(2) );
+				
+				System.out.println("nome : " + clienteArray[index].getNome() + " cognome : " + clienteArray[index].getCognome() );
+				index++;
 			}
 
 			System.out.println("nuovo cinete creato ");

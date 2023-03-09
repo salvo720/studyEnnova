@@ -26,6 +26,14 @@ public class Cliente {
 		this.email = email;
 		this.password = password;
 	}
+	
+	
+	public Cliente( String nome, String cognome) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+	
+	}
 
 
 	public int getId() {
