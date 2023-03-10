@@ -1,0 +1,4 @@
+import org.apache.log4j.Logger;  
+public static Logger log = Logger.getLogger(Main.class.getName());  
+
+log.info("Hello this is an info message");  

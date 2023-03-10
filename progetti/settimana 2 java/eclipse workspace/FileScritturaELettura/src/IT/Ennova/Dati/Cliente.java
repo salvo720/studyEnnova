@@ -8,6 +8,14 @@ public class Cliente {
 	private String email;
 	private String password;
 	private int indirizzoId;
+	
+
+	public Cliente(int id, String nome, String cognome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
 
 	public Cliente(int id, String nome, String cognome, String email, String password, Indirizzo indirizzoId) {
 		super();

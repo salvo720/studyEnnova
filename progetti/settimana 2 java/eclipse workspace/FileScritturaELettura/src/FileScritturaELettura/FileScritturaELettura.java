@@ -73,6 +73,7 @@ public class FileScritturaELettura {
 			case "8":
 				connDb();
 				break;
+			
 			default:
 				System.out.println(" Scelta non valida ");
 				break;
@@ -210,7 +211,7 @@ public class FileScritturaELettura {
 
 	public static void connDb() {
 		String connString, user, password, porta, host, DbName, QuerySql;
-		Connection connDb = null ;
+		Connection connDb = null;
 		host = "localhost";
 		DbName = "DbForJava";
 		porta = ":5432";
@@ -218,7 +219,6 @@ public class FileScritturaELettura {
 		password = "root";
 		connString = "jdbc:postgresql://" + host + porta + "/" + DbName;
 
-		
 		try {
 
 			// crea la connessione al Db
@@ -231,12 +231,13 @@ public class FileScritturaELettura {
 			ResultSet rs = st.executeQuery(QuerySql);
 
 			System.out.println("connesso");
-			
+
 			Scanner ks = new Scanner(System.in);
-			String scelta ;
+			String scelta;
 			System.out.println(" premi 0 per ternimare il programma");
-			System.out.println(" premi 1 per creare il file");
-			System.out.println(" premi 2 per scrivere nel file");
+			System.out.println(" premi 1 per aggiungere un record al database");
+			System.out.println(" premi 2 per stampare tutti i recordo del db ");
+			System.out.println(" premi 3 per stampare tutti i recordo del db con arrayList e  ");
 			scelta = ks.nextLine();
 			while (Integer.parseInt(scelta) != 0) {
 
@@ -251,6 +252,9 @@ public class FileScritturaELettura {
 				case "2":
 					DbBusiness.StampaClienti(connDb);
 					break;
+				case "3":
+					DbBusiness.StampaClientiConArrayList(connDb);
+					break;
 				default:
 					System.out.println(" Scelta non valida ");
 					break;
@@ -261,12 +265,6 @@ public class FileScritturaELettura {
 				System.out.println(" premi 2 per stampare tutti i recordo del db ");
 				scelta = ks.nextLine();
 			}
-			
-	
-			
-		
-			
-			
 
 //			rs.next() fa avanzare il dati alla tupla o record  successiva ritorna un boolean se punta su un rigo esistente
 //			questo ci consente di usare un loop dentro un while per estrarre tutti i record 
@@ -278,16 +276,14 @@ public class FileScritturaELettura {
 //				System.out.println(rs.getString(2));
 				System.out.println("nome : " + rs.getString(1) + " cognome : " + rs.getString(2));
 			}
-			
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
+
 //		DbBusiness dbBusiness = new DbBusiness();
-		
-		
+
 	}
 
 //	i package : sono simili ale cartelle
