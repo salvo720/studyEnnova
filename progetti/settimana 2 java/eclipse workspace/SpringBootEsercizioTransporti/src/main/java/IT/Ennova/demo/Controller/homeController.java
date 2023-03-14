@@ -16,6 +16,6 @@ public class homeController {
 	@GetMapping("/autisti")
 //	@ResponseBody
 	public String showAutisti(){
-		return "autisti";
+		return "index";
 	}
 }
