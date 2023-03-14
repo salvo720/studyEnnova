@@ -12,4 +12,10 @@ public class homeController {
 	public String ciao() {
 		return "ciao";
 	}
+	
+	@GetMapping("/autisti")
+//	@ResponseBody
+	public String showAutisti(){
+		return "autisti";
+	}
 }

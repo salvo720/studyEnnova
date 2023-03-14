@@ -16,8 +16,7 @@ public class ApiRestController {
 		return "saluto";
 	}
 	
-	@GetMapping("/autisti")
-//	@RequestBody
+	@GetMapping("/api/autisti")
 	public ArrayList<Autista> getAutisti(){
 		ArrayList<Autista> ArrayListAutista = BusinessLogic.getAutista();
 		return ArrayListAutista;

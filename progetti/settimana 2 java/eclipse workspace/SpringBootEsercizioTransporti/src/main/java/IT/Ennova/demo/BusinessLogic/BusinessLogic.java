@@ -48,3 +48,4 @@ public class BusinessLogic {
 // 4) realizzare le view e visualizzare i dati 
 // 5) dentro il package model creare tante classi dati quante sono le tabelle con i propi getter e setter classi 
 // fagiolo ovvero bean , e una classe normalissima dove ci sono i campi privati con costruttore privo di paramterti e deve implementare le interfacce di serializzazione 
+// aggiungere la tabella utenti con nome e password 
