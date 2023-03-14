@@ -218,6 +218,8 @@ public class FileScritturaELettura {
 		user = "postgres";
 		password = "root";
 		connString = "jdbc:postgresql://" + host + porta + "/" + DbName;
+		
+//		connString = "jdbc:postgresql://localhost:5432/DbForJava";
 
 		try {
 
