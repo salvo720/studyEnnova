@@ -1,13 +1,14 @@
+<!-- spring e molto preciso con i nome il file html si dece chiamare index.html -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org">
 
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" href="css/style.css">
+<!-- spring e molto preciso con i nomi il file css si deve chiamare main css  -->
+<link type="text/css" th:href="@{css/main.css}" rel="stylesheet" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -20,22 +21,24 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th scope="col">id</th>
-				<th scope="col">nome</th>
-				<th scope="col">cognome</th>
-				<th scope="col">telefono</th>
-				<th scope="col">email</th>
-				<th scope="col">data_assunzione</th>
-				<th scope="col">cognome</th>
-				<th scope="col">email</th>
-				<th scope="col">id</th>
-				<th scope="col">stato</th>
+				<th th:scope="col">id</th>
+				<th th:scope="col">nome</th>
+				<th th:scope="col">cognome</th>
+				<th th:scope="col">telefono</th>
+				<th th:scope="col">indirizzo</th>
+				<th th:scope="col">email</th>
+				<th th:scope="col">data_nascita</th>
+				<th th:scope="col">data_assunzione</th>
+				<th th:scope="col">patente</th>
+				<th th:scope="col">stato</th>
 			</tr>
 		</thead>
 		<tbody>
 
 		</tbody>
 	</table>
+
+	<p> ciao </p>
 
 
 	<script
@@ -49,28 +52,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
 		integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
 		crossorigin="anonymous"></script>
-	<script src="js/script.js"></script>
-
-	<script>
-		let tbody = document.querySelector("tbody");
-		let tr = document.createElement("tr");
-		let td = document.createElement("td");
-		$.ajax({
-			url : "/api/autisti",
-			contentType : 'json'
-		}).done(function(data) {
-			// inserire tutti i dati con un for 
-			let testotd;
-			for(let index=0;idnex<data.lenght;idnex++){
-			testotd[index]=document.createElement("td");
-			testotd= td+index;
-			testotd.textContet = data.id 
-			tr.appendChild(testotd);
-			}
-			console.log(data)
-			// $(this).addClass("done");
-		});
-	</script>
+  <script th:src="@{js/script.js}"></script>
 
 </body>
 
