@@ -38,7 +38,7 @@
 
     // then()  su una promise viene eseguito quando los tato e fullfilled 
 
-    debugger; // e il breakpoint scritto da codice 
+    // debugger; // e il breakpoint scritto da codice 
 
     console.log("ho finito tutto ");
 

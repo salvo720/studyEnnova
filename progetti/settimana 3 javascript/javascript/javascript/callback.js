@@ -79,7 +79,8 @@
     function elaborateInputWith(callbackFn){
         //...
         let userVar;
-        userVar = prompt("inserisci il valore " , "asd"); 
+        // userVar = prompt("inserisci il valore " , "asd"); 
+        userVar = "asd"; 
         if(typeof userVar !== 'String'){
             return "il dato inserito non e del testo ";
         }
