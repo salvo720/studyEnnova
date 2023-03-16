@@ -1,0 +1,17 @@
+package IT.Ennova.demo.Controller;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@EnableWebMvc
+@Configuration
+public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{    
+
+    // view resolver and other confugurations ommitted...
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+    }
+}
