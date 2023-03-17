@@ -10,7 +10,7 @@
 # eclipse 
 
 # .settings/
-# .metadata/
+.metadata/
 # 
 
 # node_modules

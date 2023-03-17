@@ -14,7 +14,10 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\studyEnnova\progetti\settimana 2 java\eclipse workspace"/>
 			<item value="D:\Ampps\www\studyEnnova\progetti\settimana 2 java\eclipse workspace"/>
 		</list>
+	</section>
+	<section name="ExternalProjectImportWizard">
 	</section>
 </section>

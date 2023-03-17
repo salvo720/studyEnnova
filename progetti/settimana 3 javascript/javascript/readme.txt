@@ -7,7 +7,7 @@ lancia i seguenti comandi nel progetto :
     "dev": "vite",
     "build": "build vite"
   },
-3) npm run dev 
+3) npm run dev : per eseguire il progetto che deve contenere un file index.html
 
 
 shortcut windows vscode : 
