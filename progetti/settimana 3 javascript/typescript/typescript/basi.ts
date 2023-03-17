@@ -169,7 +169,7 @@ console.log({accRedu});
 const accRedu2 :any= {};
 array.reduce((acc, citta: string, index: number, array) => {
     // return accRedu2[elementReduce2]  = (accRedu2[elementReduce2] ?? 0)+ contataoreIniziale2;
-    return acc[citta] = (acc[citta] ?? 0)+ 1;
+    // return acc[citta] = (acc[citta] ?? 0) + 1;
 }, accRedu2);
 
 console.log(` accRedu2 : ${accRedu2} `);
