@@ -241,10 +241,12 @@ function getNumberDestructured(number: number | string): Array<number> {
 
     /** soluzione 2 
      * 
+     * 
+        const initialValue : Array<string> = [];
         return Array.from( `${number}`).reduce((acc,_,index,array) => {
         const reversedChar = array[array.length -index - 1];
         return acc + (index=== 0 ? '': ' + ') + `${number}` + "0".repeat(index);
-    }); 
+    }, initialValue); 
      */
 
 
@@ -253,3 +255,23 @@ function getNumberDestructured(number: number | string): Array<number> {
 
 console.log("getNumberDestructured : " ,getNumberDestructured(325243)); // 3 + 40 + 200 + 5000 + 20000 + 300000
 getNumberDestructured(743) // 3 + 40 +700;
+
+
+// trovare la cifra piu piccola di un numero 
+
+// transformo il numero in stringa che e un iterabile , e successivamente la stringa in array , grazie alla funzione Array From 
+const chars = Array.from(String(34534545), number => parseInt(number)); // (item , index , array )
+// uso la funzione Math.min() per trovare il valore minimo , e uso lo spread operator per passsare piu valori 
+const minNumber = Math.min(...chars);
+// effettuo il console.log() del numero piu piccolo 
+console.log( "minNumber :" , minNumber , " chars.indexOf(minNumber) : ", chars.indexOf(minNumber));
+
+
+// reduce() : 
+// la funzione reduce ritorna un elemento che viene chiamato accumulatore , infatti nelal funzione abbioamo (acc,element,index,array)
+// l'accumulatore andra a contenere i valori che ritorniamo nel reduce 
+// esempio :
+// const accumulatorefinale = {} 
+// reduce ((acc,element,index,array){
+//     return acc + element 
+// }, accumulatorefinale)
