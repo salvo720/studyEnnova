@@ -302,6 +302,11 @@ objClone.id = 4;
 
 console.log(" clone object function : ", { initialObj, objClone }); // i due oggetti sono diversi 
 
+/*
+type Item3<T> = string | Record<string , string | T>;
+type Item = Record<string , string | Item3<string >>;
 
+const a : Item = {prova : {prop : {a :'b'}}};
+*/
 
 export { };
