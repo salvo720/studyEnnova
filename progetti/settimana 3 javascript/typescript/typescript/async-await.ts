@@ -69,13 +69,11 @@
     // per un tempo definito dal suo uncio parametro
 
     const pauseFor = async function (time: number) {
-        const PromiseAwait:any = await new Promise<void>((resolve, reject) => {
+        return await new Promise<void>((resolve, reject) => {
             setTimeout(() => {
                 console.log("i 10 secondi sono passati  ")
                 resolve()
             }, time);
-
-            return PromiseAwait
         });
     }
     
