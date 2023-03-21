@@ -3,6 +3,9 @@
     fireship ( tecnologie in 100 s ) : https://fireship.io/ 
     typescript :  https://www.typescriptlang.org/docs/handbook/utility-types.html
     codewar : https://www.codewars.com/ 
+    tailwindcss : https://tailwindcss.com/
+    hyperui componenti pronti con talwind css : https://www.hyperui.dev/
+    
 */
 
 // typescript  e un super set di javascript , 

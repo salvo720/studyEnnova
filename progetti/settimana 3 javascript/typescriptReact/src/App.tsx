@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, FormEventHandler, useState } from 'react'
+import { ButtonHTMLAttributes, DetailedHTMLProps, FormEventHandler, useEffect, useId, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -16,8 +16,12 @@ const appLogic = () => {
   const [count, setCount] = useState(0)  // [ valore variabile , funzione che esegue ]
   const [name, setName] = useState('')
   const [names, setNames] = useState<string[]>([]);
+  const [facts, setFacts] = useState<[]>([]);
   const [headMenu, setheadMenu] = useState<string[]>(['home', 'contatti', 'chi siamo', 'mappa']);
+  const uniqueId = useId(); // ritorna un id univoco randomico per il componente 
 
+  const [beer, setBeers] = useState<[]>([]);
+  const [count2, setCount2] = useState(0    )  // [ valore variabile , funzione che esegue ]
 
 
   const inputHandler: React.FormEventHandler<HTMLInputElement> = (event) => {
@@ -41,7 +45,14 @@ const appLogic = () => {
   }
 
 
-  return { count, name, names, headMenu, inputHandler, addName, ResetNames };
+  const sumCount = function (numberToAdd: number) {
+    return () => setCount((count) => count + numberToAdd)
+  }
+
+  const sumCount2 = function (numberToAdd: number) {
+    return () => setCount2((count2) => count2 + numberToAdd)
+  }
+  return { beer, facts, count, count2, name, names, headMenu, inputHandler, addName, ResetNames, setCount, setCount2, sumCount, sumCount2, setFacts, setBeers };
 }
 
 function Greeting({ name }: { name: string }) {
@@ -121,14 +132,62 @@ function FormNames() {
 }
 
 
+
 function App() {
-  const { headMenu } = appLogic();
+  const { beer, facts, count, count2, name, names, headMenu, inputHandler, addName, ResetNames, setCount, setCount2, sumCount,sumCount2, setFacts, setBeers } = appLogic();
+
   // react nel return puo ritornare al massimo solo 1 nodo html 
+
+  // useEffect serve ad eseguire operazione al cambiare di detirminate dipendenze
+  // useEffect() //hooks  
+  // useEffect : richiede come primo elemento la funzione e come seonco l'array delle dipendeze , 
+  // la funzione viene eseguita ogni volta che cambia la dipendeza 
+  useEffect(() => {
+    const url = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=";
+    // fetch(url + count )
+    // .then(res => res.json())
+    // .then(json => setFacts(json))
+
+    // con async e await 
+    (async function fetchUrl() {
+      await fetch(url + count).then(res => res.json()).then(json => setFacts(json))
+    })()
+  }, [count]);
+
+  useEffect(() => {
+    const url = "https://api.punkapi.com/v2/beers?page=";
+    const UrlElementForPage = "&per_page=4";
+    fetch(url + count2 + UrlElementForPage)
+      .then(res => res.json())
+      .then(json => setBeers(json))
+
+  }, [count2]);
   return (
     <div>
       <Header items={headMenu}> header children </Header>
       <main> Sono il main </main>
       {/* <FormNames></FormNames> */}
+
+      <main>
+        <div>
+          <h1> Cats Facts </h1>
+          <button className='btn btn-secondary' onClick={sumCount(-1)}>-</button>
+          <button className='d-inline-block mx-4'> {count}</button>
+          <button className='btn btn-secondary' onClick={sumCount(+1)}>+</button>
+          <div> {Array.isArray(facts) ? facts.map((fact: any, index: number) => <div key={fact._id}>{index + 1} - {fact.text}  </div>) : null}</div>
+        </div>
+        <hr />
+        <div>
+          <h1> Beers </h1>
+          <button className='btn btn-secondary' onClick={sumCount2(-1)}>-</button>
+          <button className='d-inline-block mx-4'> {count2}</button>
+          <button className='btn btn-secondary' onClick={sumCount2(+1)}>+</button>
+          <div> {Array.isArray(beer) ? beer.map((beer: any, index: number) => <div key={beer.id}>{index + 1} - {beer.name}  - {beer.description } </div>) : null}</div>
+        </div>
+
+      </main>
+
+
 
       <Footer> footer children by salvo &copy; &egrave; &grave;</Footer>
     </div>
