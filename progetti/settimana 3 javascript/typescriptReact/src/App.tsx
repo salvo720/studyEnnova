@@ -38,13 +38,13 @@ const appLogic = () => {
   return { count, name, names, inputHandler, addName, ResetNames };
 }
 
-function Greeting(name:string){
+function Greeting({name}:{name:string}){
   {
-    (name?.length > 0)
-      ? <h1 > Hi {name}</h1>
-      : null
+    if(name){
+      return <p> <h1 > Hi {name}</h1> <hr /></p>
+    }
+      return  null
   }
-  <hr />
 }
 function NameList(props: { names: string[] },) {
   console.log(props);
@@ -101,6 +101,7 @@ function JsxPagetag() {
 }
 
 function App() {
+  const { name, names, inputHandler, addName, ResetNames } = appLogic();
   return (
     <div style={{ marginTop: '40px' }}>
       <JsxPagetag />
@@ -110,6 +111,7 @@ function App() {
             <button type="submit" disabled={!(name.trim().length > 0)}> Salva nome </button>
             <button type="reset" onClick={ResetNames} disabled={!(names.length > 0)}> Reset nomi </button>
           </form>
+           <NameList names={names} />
         </div>
   )
 }
