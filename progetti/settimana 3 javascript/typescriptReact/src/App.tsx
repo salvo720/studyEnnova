@@ -2,6 +2,8 @@ import { ButtonHTMLAttributes, DetailedHTMLProps, FormEventHandler, useState } f
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Header } from './components/header/header'
+import { Footer } from './components/footer/footer'
 
 const appLogic = () => {
   /*
@@ -10,10 +12,13 @@ const appLogic = () => {
     3. Resettare il nome nella input;
   */
 
-  // le operazioni set in rect sono asyncrone quindi i  nuovi valori non li vederemo all'interazione corrente ma alla prossima , guarda ad esmepio il console.log di nams 
+  // le operazioni set in react sono asyncrone quindi i  nuovi valori non li vederemo all'interazione corrente ma alla prossima , guarda ad esmepio il console.log di nams 
   const [count, setCount] = useState(0)  // [ valore variabile , funzione che esegue ]
   const [name, setName] = useState('')
   const [names, setNames] = useState<string[]>([]);
+  const [headMenu, setheadMenu] = useState<string[]>(['home', 'contatti', 'chi siamo', 'mappa']);
+
+
 
   const inputHandler: React.FormEventHandler<HTMLInputElement> = (event) => {
     const value = (event.target as HTMLInputElement).value
@@ -35,15 +40,16 @@ const appLogic = () => {
     setNames(() => []);
   }
 
-  return { count, name, names, inputHandler, addName, ResetNames };
+
+  return { count, name, names, headMenu, inputHandler, addName, ResetNames };
 }
 
-function Greeting({name}:{name:string}){
+function Greeting({ name }: { name: string }) {
   {
-    if(name){
+    if (name) {
       return <p> <h1 > Hi {name}</h1> <hr /></p>
     }
-      return  null
+    return null
   }
 }
 function NameList(props: { names: string[] },) {
@@ -76,7 +82,7 @@ function JsxPagetag() {
         {/* count is {count} */}
         {/* {} : e un modo per stampare un valore dinamico */}
         {/* </button> */}
-       
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -100,20 +106,38 @@ function JsxPagetag() {
   )
 }
 
-function App() {
+function FormNames() {
   const { name, names, inputHandler, addName, ResetNames } = appLogic();
+  return (<div style={{ marginTop: '40px' }}>
+    <JsxPagetag />
+    <Greeting name={name} />
+    <form onSubmit={addName}>
+      <input type="text" value={name} onInput={inputHandler} autoFocus />
+      <button type="submit" disabled={!(name.trim().length > 0)}> Salva nome </button>
+      <button type="reset" onClick={ResetNames} disabled={!(names.length > 0)}> Reset nomi </button>
+    </form>
+    <NameList names={names} />
+  </div>)
+}
+
+
+function App() {
+  const { headMenu } = appLogic();
+  // react nel return puo ritornare al massimo solo 1 nodo html 
   return (
-    <div style={{ marginTop: '40px' }}>
-      <JsxPagetag />
-      <Greeting name={name} />
-          <form onSubmit={addName}>
-            <input type="text" value={name} onInput={inputHandler} autoFocus />
-            <button type="submit" disabled={!(name.trim().length > 0)}> Salva nome </button>
-            <button type="reset" onClick={ResetNames} disabled={!(names.length > 0)}> Reset nomi </button>
-          </form>
-           <NameList names={names} />
-        </div>
+    <div>
+      <Header items={headMenu}> header children </Header>
+      <main> Sono il main </main>
+      {/* <FormNames></FormNames> */}
+
+      <Footer> footer children by salvo &copy; &egrave; &grave;</Footer>
+    </div>
+
   )
 }
+
+// 1) creare un layput con header e footer come layout 
+// 2) nell'header deve mostrare un  menu con gli elementi passati da app 
+// 3) nel footer mostrare i credits , non richiedere props 
 
 export default App

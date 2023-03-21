@@ -1,9 +1,9 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} */
 
 .logo {
   height: 6em;
@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -40,3 +43,70 @@
 .read-the-docs {
   color: #888;
 }
+
+
+header>nav>ul>li {
+  display: inline-flex;
+  padding: 1em;
+  background-clip: padding-box;
+  background-color: aqua;
+  border-radius: 20%;
+  border: 1px solid black;
+}
+
+header>nav>ul>li :hover {
+  color: white;
+}
+
+
+/* fatto conil grid perche usiamo 2 assi  */
+/* #root>div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 1rem;
+    min-height:100vh;
+    font-size:20px;
+} */
+
+/* fatto con il flex per una sola direzione  */
+#root>div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+#root>div>main {
+  /* la base sara lo 0% della sia grandezza  */
+  flex: 1;
+}
+
+header {
+  border-bottom:1px solid #666;
+  /* la tecnica dell'orologia che parte da mezzogiorno quindi l'ordine dei valori sara top,right,bottom left  */
+  padding: .5rem 1rem 1.5rem 0;
+}
+/* box model : e come vengolo calcolate le diminisioni all'interno del css */
+footer {
+  background-color: #222;
+  color: #fafafa;
+  padding: 1rem;
+}
+
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header>nav>ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap:1rem;
+}
+
+
+
+/* trick browser css3 : da ispeziona element premi + per aggiungere un nuovo file di style e poi pemendo sul link puoi prendere tutte le modifiche  */
