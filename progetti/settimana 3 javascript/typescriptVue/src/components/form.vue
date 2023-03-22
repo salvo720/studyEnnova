@@ -1,11 +1,27 @@
 <script setup lang="ts">
+import { ref, watch } from "vue";
+
 defineProps<{ msg: string }>();
+
+const inputUser = ref("");
+const list = ref<string[]>([]);
+function addName() {
+  list.value = [...list.value, inputUser.value];
+  console.log(list.value);
+}
 </script>
 
 <template>
-  <div>
-    <main> main </main>
-  </div>
+  <p>hi {{ inputUser }}</p>
+  <form action="" @submit.prevent="addName()">
+    <input type="text" v-model.trim="inputUser" />
+    <button :disabled="inputUser == ''">Invia</button>
+  </form>
+  <hr />
+  <ul v-if="list.lenght">
+    <li v-for="item in list.value">{{ item }}</li>
+  </ul>
+  <hr />
 </template>
 
 <!-- lo scoped inserisce un indentificativo univoco nel componente  -->

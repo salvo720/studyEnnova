@@ -1,14 +1,13 @@
 <script setup lang="ts">
 
-const prop = defineProps<{ menu: string[] }>()
-
+const prop = defineProps<{ menu: string[] }>();
 </script>
 
 <template>
   <header>
     <nav>
       <ul >
-        <li v-for="item in prop.menu"> <a href="" v-bind:key="item"> {{ item }} </a> </li>
+        <li v-for="item in prop.menu"> <router-link :to='""+item'> {{ item }} </router-link>  </li>
       </ul>
     </nav>
   </header>

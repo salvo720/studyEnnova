@@ -3,7 +3,7 @@ import Main from './components/main.vue'
 import Footer from './components/footer.vue'
 import Header from './components/header.vue'
 
-const menu = ["home","contatti","chi siamo" , "mappa"]
+const menu = ["home","form","facts" , "/"];
 </script>
 
 <template>
@@ -16,8 +16,7 @@ const menu = ["home","contatti","chi siamo" , "mappa"]
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <Main msg="Vite + Vue"   ></Main>
-  <Footer></Footer>
+  <router-view></router-view>
 </template>
 
 <style scoped>
@@ -97,7 +96,7 @@ const menu = ["home","contatti","chi siamo" , "mappa"]
   gap: 1rem;
 }
 
-#app {
+#app   {
   /* la base sara lo 0% della sia grandezza  */
   flex: 1;
 }

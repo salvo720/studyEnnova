@@ -6,6 +6,9 @@
     tailwindcss : https://tailwindcss.com/
     hyperui componenti pronti con talwind css : https://www.hyperui.dev/
     
+    spunti:
+    sito con testo scalare e animazioni css : https://www.distrettocircolareverde.it/
+    
 */
 
 // typescript  e un super set di javascript , 
