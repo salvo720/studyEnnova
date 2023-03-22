@@ -9,6 +9,20 @@ function addName() {
   list.value = [...list.value, inputUser.value];
   console.log(list.value);
 }
+
+/*
+propagazione degli eventi js : 
+gli eventi su javascript si propagano dall'elemento che ha generato l'evento , passando dall'elemento padre  fino a quando non raggiungono il documento dove finisce la propazione ,
+ questo tipo di propagazione e detta bubbling , ad esempio se abbiamo un elevento on click , lìevento si propaga dall'elemneto che ha generato l'evento , successivamente all'elemento padre ,
+ fino a raggiungere il document 
+
+se ad un elemento assegniamo event.stopPropagation , andiamo a fermare la propagazione degli eventi 
+
+dentro un evento abbiamo sempre un target e un currentTarget : 
+1) taget : elemento che ha generato l'evento 
+2) currentTarget : e sempre chi sta ascoltando l'evento 
+i tagert e i currentTarget possono coincidere 
+*/
 </script>
 
 <template>

@@ -5,6 +5,9 @@
     codewar : https://www.codewars.com/ 
     tailwindcss : https://tailwindcss.com/
     hyperui componenti pronti con talwind css : https://www.hyperui.dev/
+    SVELTE framework : https://svelte.dev/
+    event delegation js  : https://javascript.info/event-delegation
+    rxjs : https://rxjs.dev/
     
     spunti:
     sito con testo scalare e animazioni css : https://www.distrettocircolareverde.it/
