@@ -1,4 +1,4 @@
-import { from, fromEvent, interval, map, of, scan, take, tap } from "rxjs";
+import { debounceTime, filter, from, fromEvent, interval, map, of, pairwise, scan, take, tap } from "rxjs";
 
 /** Docs :
  * 1) rxjs operatori : https://rxjs.dev/guide/overview
@@ -120,16 +120,76 @@ interval(6).pipe(
 //  Soluzione 3 con scan di rxjs 
 const allNumbers = Array.from({ length: 90 }, (_, i) => i + 1);
 const allNumbersSort = allNumbers.sort(() => Math.floor(Math.random() - .5))
-const acc :any= [];
+const acc: any = [];
 interval(6).pipe(
-  scan((acc , times: number) => {
+  scan((acc, times: number) => {
     return allNumbersSort[times];
-  } , acc),
+  }, acc),
   take(6)
 )
   .subscribe((number: any) => console.log("interval + scan : ", number))
 // */
 
+let input = document.querySelector<HTMLInputElement>('#inputUser');
+console.log("input :", input)
+
+// Input listener 
+// inseriamo nell'html un input di testo 
+// ascoltiamo gli eventi usando il fromEvent gli eventi di input nel nostro campo 
+// usiamo debounceTime(150) per evitare input troppoo ravvicinati 
+// usiamo un filter per non far passare gli input vuoti o minori di 3 caratteri 
+// nel subscribe inserire un console.log()
+
+
+// subscribepuo accettare 3 funzioni : 
+// 1) cosa avviene nel subscribe 
+// 2) funzione di errore che viene mostrato quando avviene un errore 
+// 3) complete : 
+of([]).subscribe(
+  (result) => console.log(result),
+  (error) => console.error(error),
+  () => console.log("completed"))
+
+// passsando un oggetto nel subscribe 
+of([]).subscribe({
+  next: (value) => console.log(value),
+  error: (error) => console.log(error),
+  complete: () => console.info("compleato")
+})
+
+
+// --------------------------------------------
+
+// type EventWithTarget <E = UIEvent , T = Element > = E & {target: T};
+// fromEvent<EventWithTarget<InputEvent,HTMLInputElement>>(input!, 'keyup',).pipe(
+
+interface EventWithTarget extends UIEvent {
+  target: HTMLInputElement
+}
+
+// usando typescrit e imporate tipizzare correttaemtne la sorgente 
+fromEvent<EventWithTarget>(input!, 'keyup',).pipe(
+  // map((event) =>  (event.target.value.trim().length > 3 ) ? event.target.value : false),
+  debounceTime(500),
+  map((event) => event.target.value),
+  filter(stringInput => stringInput.trim().length > 3),
+  // pairwise() // prende il precente e il successivo valore e lo ritorna come array 
+).subscribe({
+  next: (event) => console.log(event),
+  error: () => console.log("error"),
+  complete: () => console.log("complete")
+});
+
+// type guard 
+/*
+function isEventAndInputWithTheTarget (event:UIEvent) : event is {InputEvent & {target : HTMLInputElement}}{
+  return event instanceof InputEvent && !!(event.target) &&event.target instanceof HTMLInputElement
+}
+
+function elementExist(el:Element|null) : el is Element{
+  return el instanceof Element
+}
+*/  
 
 
 
