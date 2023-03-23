@@ -1,4 +1,5 @@
-import { debounceTime, filter, from, fromEvent, interval, map, of, pairwise, scan, take, tap } from "rxjs";
+import { Subscription, concatMap, debounceTime, filter, from, fromEvent, interval, map, of, pairwise, scan, switchMap, take, tap } from "rxjs";
+import { ajax } from "rxjs/ajax";
 
 /** Docs :
  * 1) rxjs operatori : https://rxjs.dev/guide/overview
@@ -130,7 +131,7 @@ interval(6).pipe(
   .subscribe((number: any) => console.log("interval + scan : ", number))
 // */
 
-let input = document.querySelector<HTMLInputElement>('#inputUser');
+const input = document.querySelector<HTMLInputElement>('#inputUser');
 console.log("input :", input)
 
 // Input listener 
@@ -189,8 +190,67 @@ function isEventAndInputWithTheTarget (event:UIEvent) : event is {InputEvent & {
 function elementExist(el:Element|null) : el is Element{
   return el instanceof Element
 }
-*/  
+*/
 
 
+// concatMap : preserva l'ordine degli obeservable e li restituisce tutti 
+// switchtMap : esegue gli observable , ma se l'obsevable successivo viene eseguito prima che l'attuale viene compleatato , 
+// inizia ad eseguire l'observalbe successivo ed annula l'esecuzione di quello attuale , da priporita all'ultimo elemento che viene perservato  
+// mergeMap : restiutsce tutti gli observable ma terra soltanto l'ultima 
+// ExstatusMap : da priporita all'obervable attuale , in base a quello che arriva prima , e se nel frattempo ne arriva un altro viene ignorato , quindi non esegue l'ultimo observable 
+
+/*
+partendo dall'esercizio sull'input fatto in precedenza ,
+al posto di fare un console.log dopo il filter esegurie una chiamta Api usand Ajax.getJson 
+urlApi = "https://chroniclingamerica.loc.gov/suggest/titles/q?florida"
+
+import { ajax } form 'rxjs/ajax' 
+stampare i risultati a schermo 
+
+ajax.getJson ritorna un observable e richiede un url 
+*/
+
+const input2 = document.querySelector<HTMLInputElement>('#inputUser2');
+const url = "https://chroniclingamerica.loc.gov/suggest/titles/?q=";
+let datiRisposta: Subscription;
+
+
+type ArrayResponse = [string, ...string[]];
+
+datiRisposta = fromEvent<EventWithTarget>(input2!, 'keyup').pipe(
+  debounceTime(500),
+  map((event) => event.target.value),
+  filter(stringInput => stringInput.trim().length > 3),
+  // tipizza le chiamate esterne altrimenti saranno di tipo unknown , 
+  // e typescrit segnera deli errori quando si usano gli eleemnti di quella rispsota 
+  switchMap((ElementCercato: String) => ajax.getJSON<ArrayResponse>(url + ElementCercato)),
+  map<ArrayResponse, Array<string>>((arrayResponse) => arrayResponse.slice(1))
+  // soluzione 
+  // map<ArrayResponse, Array<string>>((arrayResponse) => arrayResponse.at(1)),
+  // concatMap((titles) => of(...titles))
+).subscribe({
+  // interazine con l'esterno avviene dentro il subscrive 
+  next: (dati) => {
+    console.log("subscribe : ", dati);
+    const ul = document.querySelector<HTMLInputElement>('.ContenutoRispsotaAjax')!;
+    ul.innerHTML = '';
+    dati.forEach(element => {
+      if (element.length) {
+        const li = document.createElement('li');
+        li.innerText = element;
+        ul.append(li);
+      }
+
+      // soluzione
+      // li.innerText = dati;
+
+    });
+    // ul?.innerHTML 
+  },
+  error: () => console.log("error"),
+  complete: () => console.log("complete")
+});
+
+// .subscribe((res)=>console.log("ajax :" , res ));
 
 export { }
