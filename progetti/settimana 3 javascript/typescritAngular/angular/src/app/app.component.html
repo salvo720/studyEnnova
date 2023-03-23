@@ -1,4 +1,5 @@
-<div>
+<!-- definiamo un osservabile come una variabile di nome count   -->
+<!-- <div *ngIf="(count$|async) as count"> -->
   <button (click)="decrement()" [disabled]="!(count > 0)">-</button>
 
   <span>
@@ -6,10 +7,11 @@
     {{ count <= 1 ? "time" : "times" }} </span>
 
       <button (click)="increment()">+</button>
-</div>
+<!-- </div> -->
 
 
 <div>
+  <!-- <div *ngif="(titles$\async) as titles"> -->
   <ng-container *ngIf="count > 0">
     <div *ngFor="let item of items">
       {{item}}

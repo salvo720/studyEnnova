@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import INewApi from './components/interface/inew-api';
 import IArticle from './components/interface/iarticle';
+import { BehaviorSubject, Subject, tap, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -147,13 +148,28 @@ export class AppComponent {
     }
   ];
 
+  // Subject : puo sia aggirnare il dato che effettuare il subscribe
+  //  parte sempre da un valore e ci da la possibilita di prenderlo
+  count$ = new BehaviorSubject<number>(0);
+
   constructor(private http: HttpClient) { }
   increment() {
-    let div = document.querySelector("#rispostaServer")!;
     this.count += 1;
     console.log(this.count)
     const url = `https://newsapi.org/v2/everything?q=Italia&sortBy=publishedAt&apiKey=cea52831eed64f90961345afeec19f5e&page=${this.count}&pageSize=10`
 
+    /* preview 24/03
+    const currentValue = this.count$.getValue();
+    this.count$.next(currentValue + 1)
+
+    const titles$ = this.count$.pipe(
+      tap(console.log),
+      switchMap((count)=> this.http.get<INewApi>(url)),
+      switchMap((count)=> of(mock)),
+      map((news) => news.articles),
+      map((articles)=> articles.slice(0,this.count$.getValue()).map(article) => article)
+    );
+    */
     /*
     this.http.get<INewApi>(url).subscribe(
       (value: INewApi) => {
