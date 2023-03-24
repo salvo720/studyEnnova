@@ -1,8 +1,10 @@
-<div> {{ date| date:'dd/MM/YYYY h:mm:ss':'+02'}} </div>
-<div> {{ 10000| number}} </div>
-<div> {{ 1| percent }} </div>
-<div> {{ 'ciao'| pipeCapitalize }} </div>
-<div> {{ '22a'| pipeDoubleNumber }} </div>
+<div> date :{{ date| date:'dd/MM/YYYY h:mm:ss':'+02'}} </div>
+<div> number :{{ 10000| number}} </div>
+<div> percent :{{ 1| percent }} </div>
+<div> pipeCapitalize : {{ 'ciao'| pipeCapitalize }} </div>
+<div> pipeDoubleNumber: {{ '22a'| pipeDoubleNumber }} </div>
+<div> pipeIntL : {{ '1000' | pipeIntL : 'date'  : {  currency : ['',''   ] } }} </div>
+
 <app-header [navItems]="navItems"></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

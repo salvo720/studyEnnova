@@ -10,6 +10,7 @@ import { PaginaContataoreEArticoliComponent } from './components/pagina-contatao
 import { NavComponent } from './components/nav/nav.component';
 import { PipeCapitalizePipe } from './pipes/pipeCapitalize/pipe-capitalize.pipe';
 import { PipeDoubleNumberPipe } from './pipes/pipeDoubleNumber/pipe-double-number.pipe';
+import { PipeIntLPipe } from './pipes/pipeIntL/pipe-int-l.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PipeDoubleNumberPipe } from './pipes/pipeDoubleNumber/pipe-double-numbe
     NavComponent,
     PipeCapitalizePipe,
     PipeDoubleNumberPipe,
+    PipeIntLPipe,
   ],
   imports: [
     BrowserModule,
