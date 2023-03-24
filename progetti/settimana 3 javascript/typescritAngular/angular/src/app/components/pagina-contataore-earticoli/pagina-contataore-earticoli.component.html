@@ -1,0 +1,50 @@
+<!-- definiamo un osservabile come una variabile di nome count   -->
+<!-- <div *ngIf="(count$|async) as count"> -->
+
+<button (click)="decrement()" [disabled]="!(count > 0)" [ngStyle]="{'margin-top':'10px'}" [style.magin-top.px]="10"
+  [class.disabled]="count !=1" [attr.data-count]="count">-</button>
+
+<!-- [disabled]="!(count > 0)" // presenrva il valore e lo va ad inserire nel mio nodo -->
+<!-- data-count="{{count}}" //prende la variabile e la converte in stringa quindi non sara reattiva    -->
+
+<!-- [attr.data-count]="String(count)" // non possiamo farlo perche i metodi che andiamo a richiamare devono essere presenti nel componente.ts  -->
+
+<!-- ngStyle ha un valore piu alto come regola css rispetto a style.magin-top.px -->
+
+<span>
+  you are counting {{ count }}
+  {{ count <= 1 ? "time" : "times" }} </span>
+
+    <button (click)="increment()">+</button>
+    <!-- </div> -->
+
+    <div>
+      <!-- <div *ngif="(titles$\async) as titles"> -->
+      <ng-container *ngIf="count > 0">
+        <div *ngFor="let item of items">
+          {{item}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ul *ngFor="let articolo of articoli">
+      <li>
+        <dl>
+          <dt>
+            <h3> {{ articolo.title }} </h3> <br> {{ articolo.content }}
+          </dt>
+          <dd> <img width="400px" height="200px" src="{{ articolo.urlToImage }}" alt=""> </dd>
+        </dl>
+
+        <h5> fonte : {{ articolo.source.id }}</h5>
+        <h4> <a href="{{ articolo.url }}"> vai al link </a> <br> {{ articolo.author }} {{ articolo.publishedAt }} </h4>
+      </li>
+    </ul>
+
+    <!--
+    <div class="effettoSfocato">
+      <div class="shadow">
+
+      </div>
+    </div>
+    -->

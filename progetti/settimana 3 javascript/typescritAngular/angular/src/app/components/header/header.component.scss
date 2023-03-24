@@ -1,0 +1,8 @@
+app-header{  // host e un alias e indica che questo stile vale solo per il componente attuale
+  header > nav > ul {
+    display:grid;
+    flex-direction: column;
+    flex-flow: row nowrap;
+  }
+
+}

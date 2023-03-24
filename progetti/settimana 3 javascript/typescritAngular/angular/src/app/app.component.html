@@ -1,35 +1,10 @@
-<!-- definiamo un osservabile come una variabile di nome count   -->
-<!-- <div *ngIf="(count$|async) as count"> -->
-  <button (click)="decrement()" [disabled]="!(count > 0)">-</button>
-
-  <span>
-    you are counting {{ count }}
-    {{ count <= 1 ? "time" : "times" }} </span>
-
-      <button (click)="increment()">+</button>
-<!-- </div> -->
-
-
-<div>
-  <!-- <div *ngif="(titles$\async) as titles"> -->
-  <ng-container *ngIf="count > 0">
-    <div *ngFor="let item of items">
-      {{item}}
-    </div>
-  </ng-container>
-</div>
-
-<ul *ngFor="let articolo of articoli">
-  <li>
-    <dl>
-      <dt> <h3> {{ articolo.title }} </h3> <br> {{ articolo.content }} </dt>
-      <dd> <img width="400px" height="200px" src="{{ articolo.urlToImage }}" alt=""> </dd>
-    </dl>
-
-    <h5> fonte : {{ articolo.source.id }}</h5>
-    <h4> <a href="{{ articolo.url }}"> vai al link </a> <br> {{ articolo.author }} {{ articolo.publishedAt }} </h4>
-  </li>
-</ul>
-
-
+<div> {{ date| date:'dd/MM/YYYY h:mm:ss':'+02'}} </div>
+<div> {{ 10000| number}} </div>
+<div> {{ 1| percent }} </div>
+<div> {{ 'ciao'| pipeCapitalize }} </div>
+<div> {{ '22a'| pipeDoubleNumber }} </div>
+<app-header [navItems]="navItems"></app-header>
 <router-outlet></router-outlet>
+<app-footer></app-footer>
+
+
