@@ -65,11 +65,11 @@ export class PipeIntLPipe implements PipeTransform {
       console.log("date :", date)
       console.log("dateFromNumber :", dateFromNumber)
       // gaurd condiction
-      if (!isWeakFormatDateOption(method, options) && !isValidDate(dateFromNumber)) {
+      // if (!isWeakFormatDateOption(method, options) && !isValidDate(dateFromNumber)) {
 
-        console.log("dateFromNumber :", dateFromNumber)
-        return "la data non e valida"
-      }
+      //   console.log("dateFromNumber :", dateFromNumber)
+      //   return "la data non e valida"
+      // }
       console.log("dateFromNumber :", dateFromNumber)
 
       if (options == undefined) {
