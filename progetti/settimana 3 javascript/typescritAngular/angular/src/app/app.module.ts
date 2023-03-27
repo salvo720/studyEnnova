@@ -11,6 +11,9 @@ import { NavComponent } from './components/nav/nav.component';
 import { PipeCapitalizePipe } from './pipes/pipeCapitalize/pipe-capitalize.pipe';
 import { PipeDoubleNumberPipe } from './pipes/pipeDoubleNumber/pipe-double-number.pipe';
 import { PipeIntLPipe } from './pipes/pipeIntL/pipe-int-l.pipe';
+import { CastArrayPipe } from './pipes/castArray/cast-array.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { TestPaginaComponent } from './components/test-pagina/test-pagina.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { PipeIntLPipe } from './pipes/pipeIntL/pipe-int-l.pipe';
     PipeCapitalizePipe,
     PipeDoubleNumberPipe,
     PipeIntLPipe,
+    CastArrayPipe,
+    HomeComponent,
+    TestPaginaComponent,
   ],
   imports: [
     BrowserModule,

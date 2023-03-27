@@ -3,6 +3,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PaginaContataoreEArticoliComponent } from './components/pagina-contataore-earticoli/pagina-contataore-earticoli.component';
+import { NavComponent } from './components/nav/nav.component';
+import { PipeCapitalizePipe } from './pipes/pipeCapitalize/pipe-capitalize.pipe';
+import { PipeDoubleNumberPipe } from './pipes/pipeDoubleNumber/pipe-double-number.pipe';
+import { PipeIntLPipe } from './pipes/pipeIntL/pipe-int-l.pipe';
+import { CastArrayPipe } from './pipes/castArray/cast-array.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { TestPaginaComponent } from './components/test-pagina/test-pagina.component';
+
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -11,7 +23,17 @@ describe('AppComponent', () => {
         HttpClientTestingModule,
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        PaginaContataoreEArticoliComponent,
+        NavComponent,
+        PipeCapitalizePipe,
+        PipeDoubleNumberPipe,
+        PipeIntLPipe,
+        CastArrayPipe,
+        HomeComponent,
+        TestPaginaComponent,
       ],
     }).compileComponents();
   });

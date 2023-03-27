@@ -1,0 +1,22 @@
+<p>test-pagina works!</p>
+
+<hr>
+<div> date :{{ date| date:'dd/MM/YYYY h:mm:ss':'+02'}} </div>
+<div> number :{{ 10000| number}} </div>
+<div> percent :{{ 1| percent }} </div>
+<div> pipeCapitalize : {{ 'ciao'| pipeCapitalize }} </div>
+<div> pipeDoubleNumber: {{ '22a'| pipeDoubleNumber }} </div>
+<!-- <div> pipeIntL : {{ '1000' | pipeIntL : 'date'  : {  currency : ['',''   ] } }} </div> -->
+
+
+<hr>
+string : {{ 'ciao' | castArray | json }}<!-- c,i,a,o  --> <br>
+number :{{ 12 | castArray | json  }}<!-- 1,2  --> <br>
+number :{{ 12.5 | castArray | json  }}<!-- 1,2  --> <br>
+array : {{ ['testo1','testo2'] | castArray | json}}<!-- a,b  --> <br>
+null : {{ null | castArray | json  }}<!-- [] , aggingere come ultima pipe json ci mostra l'array vuoto  --> <br>
+undefined : {{ undefined | castArray  | json }}<!-- [] --> <br>
+object :{{ {'chiave1':'valore1','chaive2':'valore2'} | castArray | json }}<!-- [] --> <br>
+objectMap : {{ objectMap | castArray | json }}<!-- [] --> <br>
+
+<hr>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import INewApi from './components/interface/inew-api';
 import IArticle from './components/interface/iarticle';
@@ -8,16 +8,16 @@ import { BehaviorSubject, Subject, tap, switchMap, debounceTime, fromEvent, thro
 /**
  * Docs :
  * cypress per effettuare i test libreria e2e link : https://www.cypress.io/
+ * rxjs nel dettaglio corso di Michele Stieven : https://accademia.dev/corso/rxjs-masterclass/
  */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'angular';
-  navItems = ['home', 'ContatoreEArticoli']
-  date = new Date();
+export class AppComponent implements OnInit , OnChanges , AfterViewInit {
+  title = 'angular app is running!';
+
 
 
   // animazione che segue il muose
@@ -66,4 +66,19 @@ export class AppComponent {
 
     */
   }
+
+  // viene lanciato appena viene crato il componente
+  ngOnInit(): void {
+    console.log('Method not implemented.');
+  }
+  // viene eseguito quando le props cambiano
+  ngOnChanges(changes : SimpleChanges): void {
+    console.log('Method not implemented.' , changes);
+  }
+  // viene usato per accedere agli elementi del Dom
+  ngAfterViewInit(): void {
+    console.log('Method not implemented.');
+
+  }
+
 }

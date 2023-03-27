@@ -9,10 +9,18 @@ describe('PipeDoubleNumberPipe', () => {
 
 
   it('should transform a string into a number', () => {
-    const input = 'ciao';
+    const input = '10';
     const pipe = new PipeDoubleNumberPipe();
     const output = pipe.transform(input);
     expect(typeof output).toBe('number');
+  });
+
+  it('should transform a string into a number if string is not Nan', () => {
+    const input = 'ciao';
+    const risposta = 'inserisci un valore valido ';
+    const pipe = new PipeDoubleNumberPipe();
+    const output = pipe.transform(input);
+    expect(typeof output).toBe(risposta);
   });
 
 
@@ -20,7 +28,7 @@ describe('PipeDoubleNumberPipe', () => {
     const input = 'ciao';
     const pipe = new PipeDoubleNumberPipe();
     const output = pipe.transform(input);
-    expect(typeof output).toBe('string');
+    expect(typeof output).toBe('Nan');
   });
 
   it('if string is Number return number', () => {

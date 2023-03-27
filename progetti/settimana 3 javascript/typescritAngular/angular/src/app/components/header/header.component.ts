@@ -1,5 +1,5 @@
 import { ViewEncapsulation } from '@angular/compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +8,35 @@ import { Component, Input, OnInit } from '@angular/core';
   // encapsulation: ViewEncapsulation.None  // elimina del componente figlio
 })
 export class HeaderComponent implements OnInit{
-
+  objectMap ;
+  // il decorate input per passare una variabile al componente figlio
   @Input() navItems!:Array<string>; // dopo una variablie ! :  indica una propieta obbligatoria quindi non dobbiamo inizializzarla
 
-  // momento di inizializziaione del componente
+  @Output() clicknav = new EventEmitter();
+
   constructor(){
     console.log( "construttore ")
     console.log( "navItems : ",  this.navItems);
+    this.objectMap =  new Map([
+      ["apples", 500],
+      ["bananas", 300],
+      ["oranges", 200]
+    ]);
   }
 
   ngOnInit(): void {
     console.log( "OnInit ")
     console.log( "navItems : ",  this.navItems);
+
   }
+
+  handleClickedOnNav($event:Event){
+    console.log($event)
+  }
+
+
+  clickNavHandler () {
+    this.clicknav.emit("Sono un valore emesso dalla nav ")
+  }
+
 }

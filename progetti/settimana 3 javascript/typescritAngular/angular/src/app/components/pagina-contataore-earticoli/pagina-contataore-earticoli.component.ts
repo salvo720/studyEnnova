@@ -146,7 +146,7 @@ export class PaginaContataoreEArticoliComponent {
     }
   ];
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
 
   // questa linear ci permette di definire il metodo string e di portelo richiamare nell'html tra le {{}}

@@ -1,7 +1,7 @@
 <header>
   <nav>
-    <ul >
-      <app-nav *ngFor="let item of navItems" [item]="item"></app-nav>
+    <ul (click)="clicknav.emit('ciao')">
+      <app-nav *ngFor="let item of navItems" (clicked)="handleClickedOnNav($event)" [item]="item"></app-nav>
     </ul>
   </nav>
 </header>
