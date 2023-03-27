@@ -18,6 +18,7 @@ import { BehaviorSubject, Subject, tap, switchMap, debounceTime, fromEvent, thro
 export class AppComponent implements OnInit , OnChanges , AfterViewInit {
   title = 'angular app is running!';
 
+  navItems = ['home', 'ContatoreEArticoli' , 'testPagina']
 
 
   // animazione che segue il muose

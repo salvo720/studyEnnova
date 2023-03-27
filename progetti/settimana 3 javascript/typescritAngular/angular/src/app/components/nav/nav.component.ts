@@ -24,4 +24,6 @@ export class NavComponent implements OnInit {
     this.clicknav.emit("Sono un valore emesso dalla nav ")
   }
 
+  
+
 }

@@ -14,6 +14,8 @@ import { PipeIntLPipe } from './pipes/pipeIntL/pipe-int-l.pipe';
 import { CastArrayPipe } from './pipes/castArray/cast-array.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { TestPaginaComponent } from './components/test-pagina/test-pagina.component';
+import { AccordionBootstrapComponent } from './components/accordion-bootstrap/accordion-bootstrap.component';
+import { AccordionBootstrapItemComponent } from './components/accordion-bootstrap/accordion-bootstrap-item/accordion-bootstrap-item.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { TestPaginaComponent } from './components/test-pagina/test-pagina.compon
     CastArrayPipe,
     HomeComponent,
     TestPaginaComponent,
+    AccordionBootstrapComponent,
+    AccordionBootstrapItemComponent,
   ],
   imports: [
     BrowserModule,

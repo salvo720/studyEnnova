@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+import IAccordion from '../interface/iaccordion';
+import IEventAccordion from '../interface/IEventAccordion';
 
 @Component({
   selector: 'app-test-pagina',

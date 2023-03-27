@@ -1,3 +1,3 @@
-export default interface opzionale  {
+export default interface IOpzionale  {
   currency : Intl.DateTimeFormatOptions ,
 }

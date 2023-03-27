@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit{
       ["bananas", 300],
       ["oranges", 200]
     ]);
+  this.navItems = ['home', 'ContatoreEArticoli' , 'testPagina']
+
   }
 
   ngOnInit(): void {

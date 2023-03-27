@@ -1,0 +1,15 @@
+<p>accordion-bootstrap works!</p>
+
+<div class="container">
+  <div class="accordin">
+
+    <!-- IL CONTENITORE PADRE DEVE GESTIRE TUTTI GLI ITEM PROBABILEMTE CON N OGGETTO    -->
+    <div class="accordion-item" *ngFor="let accordion of accordionItems; index as i " >
+      <app-accordion-bootstrap-item [isOpen]="i === currentOpen" [accordionItem]="accordion" (headerAccordion)="toggle(i)" ></app-accordion-bootstrap-item>
+    </div>
+
+  </div>
+
+
+
+</div>
