@@ -1,0 +1,44 @@
+<p>modal works!</p>
+
+
+
+<!--
+scivere un componente modale .
+una modale non e altro che un div in position fixed che si
+pone sopra tutti gli atri elementi della pagina
+viene caratterizzato da due elementi :
+1) una shadow che e uno sfondo scuro
+2) un modal-body che e il nostro div con sfondo binaco che continene html
+
+al click sulla shadow dobbiamo far chiudere la modale
+
+Bonus :
+mettiamo dentro la modale un bottone accetta che al click va a chiudere la modale ,
+per differenziarlo dalla chiusura shadow emettiamo un valore diverso .
+ il componente padre deve fare un console.log particolare quando questo avviene
+
+ il componente deve mostrare il suo contenuto solo se  @input isOpen e true ;
+ Emettere un evento al click su shadow (e eventuale button accetta )
+ -->
+
+<!-- i componenti dummy fanno solo da input e output e non fanno altro , per questo qui non modifichiamo mai i valori ma viene fatto sul componente  padre  -->
+
+ <!-- Trigger/Open The Modal -->
+<button (click)="openModal.emit()">Open Modal</button>
+
+<!-- The Modal -->
+<div class="modal" [ngStyle]="{'display': isOpen ? 'block' : 'none'}">
+
+  <!-- Modal content -->
+  <div *ngIf="isOpen" class="modal-content" >
+    <button class="close" (click)="closeModal.emit()">&times;</button>
+    <p>Some text in the Modal..</p>
+    <button class="success" (click)="closeModalBottoneAccetta.emit('accetta')">Accetta</button>
+  </div>
+
+</div>
+
+<!-- va a usare un elemento che non sara presente nell'html finale ma possiamo usarlo come contenitore  -->
+<ng-container >
+  <p> p dentro ng-cotnainer</p>
+</ng-container>

@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TestPaginaComponent } from './components/test-pagina/test-pagina.component';
 import { AccordionBootstrapComponent } from './components/accordion-bootstrap/accordion-bootstrap.component';
 import { AccordionBootstrapItemComponent } from './components/accordion-bootstrap/accordion-bootstrap-item/accordion-bootstrap-item.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AccordionBootstrapItemComponent } from './components/accordion-bootstra
     TestPaginaComponent,
     AccordionBootstrapComponent,
     AccordionBootstrapItemComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,35 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid black;
+  width: min(80%, 80rem);
+}
+
+.success{
+  background-color: green;
+  color:white;
+  border-radius: 10%;
+  font-weight: bold;
+}
+
+
+.test{
+  // transform : translate() va a modificare la poszione del mio elemento di -50% top e -50% left , partendo dalla posizione
+  // dell'elemento e non dall'elemento padre
+  // scale() e un animazione di ingrandimento
+  transform: translate(-50%,-50%) scale(.7);
+}

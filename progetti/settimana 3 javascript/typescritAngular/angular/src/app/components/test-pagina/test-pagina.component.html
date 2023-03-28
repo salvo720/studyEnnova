@@ -11,14 +11,17 @@
 
 <hr>
 string : {{ 'ciao' | castArray | json }}<!-- c,i,a,o  --> <br>
-number :{{ 12 | castArray | json  }}<!-- 1,2  --> <br>
-number :{{ 12.5 | castArray | json  }}<!-- 1,2  --> <br>
+number :{{ 12 | castArray | json }}<!-- 1,2  --> <br>
+number :{{ 12.5 | castArray | json }}<!-- 1,2  --> <br>
 array : {{ ['testo1','testo2'] | castArray | json}}<!-- a,b  --> <br>
-null : {{ null | castArray | json  }}<!-- [] , aggingere come ultima pipe json ci mostra l'array vuoto  --> <br>
-undefined : {{ undefined | castArray  | json }}<!-- [] --> <br>
+null : {{ null | castArray | json }}<!-- [] , aggingere come ultima pipe json ci mostra l'array vuoto  --> <br>
+undefined : {{ undefined | castArray | json }}<!-- [] --> <br>
 object :{{ {'chiave1':'valore1','chaive2':'valore2'} | castArray | json }}<!-- [] --> <br>
 objectMap : {{ objectMap | castArray | json }}<!-- [] --> <br>
 <hr>
 
-<app-accordion-bootstrap ></app-accordion-bootstrap>
+<app-accordion-bootstrap></app-accordion-bootstrap>
+
+<hr>
+<app-modal [isOpen]="isModalOpen" (openModal)="modalHandler()" (closeModal)="modalHandler()" (closeModalBottoneAccetta)="modalHandler($event)"> </app-modal>
 <hr>
