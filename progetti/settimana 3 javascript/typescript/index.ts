@@ -4,3 +4,4 @@ import './typescript/function';
 // altrimenti typescirpt andara a cercare un module di typescirpt 
 
 import './typescript/async-await'
+import './typescript/functionOverloads'
