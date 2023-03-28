@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, HostListener, Input } from '@angular/core';
-import IAccordion from '../interface/iaccordion';
-import IEventAccordion from '../interface/IEventAccordion';
+import IAccordion from '../../interface/iaccordion';
+import IEventAccordion from '../../interface/IEventAccordion';
 
 @Component({
   selector: 'app-test-pagina',

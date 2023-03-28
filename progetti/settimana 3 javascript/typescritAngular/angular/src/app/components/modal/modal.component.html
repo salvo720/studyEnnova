@@ -27,10 +27,10 @@ per differenziarlo dalla chiusura shadow emettiamo un valore diverso .
 <button (click)="openModal.emit()">Open Modal</button>
 
 <!-- The Modal -->
-<div class="modal" [ngStyle]="{'display': isOpen ? 'block' : 'none'}">
+<div class="modal"  [ngStyle]="{'display': isOpen ? 'block' : 'none'}">
 
   <!-- Modal content -->
-  <div *ngIf="isOpen" class="modal-content" >
+  <div @slideInOut *ngIf="isOpen" class="modal-content" >
     <button class="close" (click)="closeModal.emit()">&times;</button>
     <p>Some text in the Modal..</p>
     <button class="success" (click)="closeModalBottoneAccetta.emit('accetta')">Accetta</button>

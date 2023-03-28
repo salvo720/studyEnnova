@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import opzionale from '../../components/interface/iopzionale';
+import opzionale from '../../interface/iopzionale';
 
 @Pipe({
   name: 'pipeIntL'

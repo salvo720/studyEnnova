@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import IAccordion from '../interface/iaccordion';
-import IEventAccordion from '../interface/IEventAccordion';
+import IAccordion from '../../interface/iaccordion';
+import IEventAccordion from '../../interface/IEventAccordion';
 
 @Component({
   selector: 'app-accordion-bootstrap',

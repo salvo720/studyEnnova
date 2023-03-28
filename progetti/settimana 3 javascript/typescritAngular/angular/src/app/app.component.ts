@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import INewApi from './components/interface/inew-api';
-import IArticle from './components/interface/iarticle';
+import INewApi from './interface/inew-api';
+import IArticle from './interface/iarticle';
 import { BehaviorSubject, Subject, tap, switchMap, debounceTime, fromEvent, throttleTime, animationFrameScheduler, delay } from 'rxjs';
 
 // per eseguire i test vai sotto la cartella del progetti ed esegui il comando :  npm run test
@@ -9,6 +9,7 @@ import { BehaviorSubject, Subject, tap, switchMap, debounceTime, fromEvent, thro
  * Docs :
  * cypress per effettuare i test libreria e2e link : https://www.cypress.io/
  * rxjs nel dettaglio corso di Michele Stieven : https://accademia.dev/corso/rxjs-masterclass/
+ * animazioni angular : https://angular.io/guide/transition-and-triggers
  */
 @Component({
   selector: 'app-root',

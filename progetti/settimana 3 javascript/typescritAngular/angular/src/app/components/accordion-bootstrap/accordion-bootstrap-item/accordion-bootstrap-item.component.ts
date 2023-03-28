@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import IAccordion from '../../interface/iaccordion';
+import IAccordion from '../../../interface/iaccordion';
 
 @Component({
   selector: 'app-accordion-bootstrap-item',

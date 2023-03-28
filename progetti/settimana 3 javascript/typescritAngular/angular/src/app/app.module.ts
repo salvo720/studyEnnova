@@ -17,6 +17,10 @@ import { TestPaginaComponent } from './components/test-pagina/test-pagina.compon
 import { AccordionBootstrapComponent } from './components/accordion-bootstrap/accordion-bootstrap.component';
 import { AccordionBootstrapItemComponent } from './components/accordion-bootstrap/accordion-bootstrap-item/accordion-bootstrap-item.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorComponent } from './components/error/error.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { BlogArticleComponent } from './components/blog-article/blog-article.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +38,15 @@ import { ModalComponent } from './components/modal/modal.component';
     AccordionBootstrapComponent,
     AccordionBootstrapItemComponent,
     ModalComponent,
+    ErrorComponent,
+    BlogComponent,
+    BlogArticleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent ]

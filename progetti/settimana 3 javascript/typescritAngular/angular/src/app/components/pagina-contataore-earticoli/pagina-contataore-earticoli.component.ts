@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import IArticle from '../interface/iarticle';
+import IArticle from '../../interface/iarticle';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

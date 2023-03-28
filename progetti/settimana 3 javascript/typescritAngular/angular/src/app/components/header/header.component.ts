@@ -1,5 +1,6 @@
 import { ViewEncapsulation } from '@angular/compiler';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { BlogService } from '../../services/blog/blog.service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit{
   objectMap ;
+  blogService = inject(BlogService)
   // il decorate input per passare una variabile al componente figlio
   @Input() navItems!:Array<string>; // dopo una variablie ! :  indica una propieta obbligatoria quindi non dobbiamo inizializzarla
 
@@ -39,6 +41,10 @@ export class HeaderComponent implements OnInit{
 
   clickNavHandler () {
     this.clicknav.emit("Sono un valore emesso dalla nav ")
+  }
+
+  reset () {
+    this.blogService.dato$.next(0)
   }
 
 }
