@@ -1,11 +1,16 @@
 <p>blog-article works!</p>
 
-<div *ngIf="articleBlog$|async as articleBlog;then articleElse">
-  <article>
-    <!-- <h2> {{ articleBlog.title}}</h2> -->
-    <!-- <h3> {{ articleBlog.data}}</h3> -->
-  </article>
+<hr />
+<div>
+
+<div *ngFor="let article of articleBlog$ | async ">
+    <article>
+      <h2>{{ article.title }}</h2>
+      <h3>{{ article.type }}</h3>
+      <h3>{{ article.descendants }}</h3>
+      <div> <h4>{{ article.score }} -  {{ article.time | date }} -  <a [href]="article.url"> link </a> -   {{ article.by }}</h4> </div>
+    </article>
 </div>
-<ng-template #articleElse>
-  <!-- <h3> {{ articleBlog|async|json}}</h3> -->
-</ng-template>
+<hr>
+  <!-- <h3>{{ articleBlog$ | async | json }}</h3> -->
+<hr />

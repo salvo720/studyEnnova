@@ -6,7 +6,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  navItems = ['home', 'ContatoreEArticoli' , 'testPagina']
-
 
 }

@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
       ["bananas", 300],
       ["oranges", 200]
     ]);
-    this.navItems = ['home', 'ContatoreEArticoli', 'testPagina', 'blog' , 'blog/data' , 'blog/data/edit']
 
   }
 

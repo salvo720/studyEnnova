@@ -1,4 +1,5 @@
 export default interface IResponseHackerNews {
+  filter(arg0: any): any;
   by:          string;
   descendants: number;
   id:          number;

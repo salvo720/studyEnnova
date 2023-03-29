@@ -34,12 +34,12 @@ const routes: Routes = [
     },
     {
       // mostrare il data statico
-      path: ':slug',
+      path: ':id',
       component: BlogArticleComponent,
       data: { article: { title: 'il catania va in serie c ', data: new Date() } }
     },
     {
-      path: ':slug/edit',
+      path: ':id/edit',
       component: HomeComponent
     },]
   },

@@ -16,10 +16,10 @@ import { BehaviorSubject, Subject, tap, switchMap, debounceTime, fromEvent, thro
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit , OnChanges , AfterViewInit {
+export class AppComponent implements OnInit, OnChanges, AfterViewInit {
   title = 'angular app is running!';
+  navItems = ['home', 'ContatoreEArticoli', 'testPagina', 'blog', 'blog/data', 'blog/data/edit']
 
-  navItems = ['home', 'ContatoreEArticoli' , 'testPagina']
 
 
   // animazione che segue il muose
@@ -74,8 +74,8 @@ export class AppComponent implements OnInit , OnChanges , AfterViewInit {
     console.log('Method not implemented.');
   }
   // viene eseguito quando le props cambiano
-  ngOnChanges(changes : SimpleChanges): void {
-    console.log('Method not implemented.' , changes);
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Method not implemented.', changes);
   }
   // viene usato per accedere agli elementi del Dom
   ngAfterViewInit(): void {

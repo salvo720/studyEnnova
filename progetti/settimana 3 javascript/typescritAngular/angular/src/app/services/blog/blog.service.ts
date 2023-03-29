@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, from, map, mergeMap, tap, switchMap, concatMap, toArray, take, interval, of, filter } from 'rxjs';
+import { BehaviorSubject, Observable, from, map, mergeMap, tap, switchMap, concatMap, toArray, take, interval, of, filter, Subscription } from 'rxjs';
 import IResponseHackerNews from 'src/app/interface/IResponseHackerNews';
 
 @Injectable({
@@ -44,7 +44,7 @@ export class BlogService {
     this.dato$.next(0)
   }
 
-  getHackerNewsData() {
+  getHackerNewsData() : Observable<IResponseHackerNews[][]> {
     const urlIds = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
     return this.hackerNewsApiData$ = this.http.get<number[]>(urlIds).pipe(
       map((Arrayids: number[]) => Arrayids.slice(0, 10)),
@@ -65,14 +65,14 @@ export class BlogService {
 
   }
 
-  getHackerNewsById(id:number) {
-    this.getHackerNewsData().pipe(
-      filter((data:any)=> data.forEach((element:IResponseHackerNews) => {
-        return  element.id==id
-      })),
-      tap((data) => console.log("filter : ",data)),
+  // il service effettua il return di un this.http.get
+  getHackerNewsById(id: number) : Observable<IResponseHackerNews> {
+    return this.getHackerNewsData().pipe(
 
-    ).subscribe() ;
+      tap((data: any) => console.log("filter : ", data, "id : ", id)),
+      map((data: IResponseHackerNews[]) => data.filter(element => element.id == id)),
+      tap((data: any) => console.log("filter dopo  : ", data)),
+    );
   }
 
 }
