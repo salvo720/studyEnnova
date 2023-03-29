@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, from, map, mergeMap, tap, switchMap, concatMap, toArray, take, interval, of, filter, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, from, map, mergeMap, tap, switchMap, concatMap, toArray, take, interval, of, filter, Subscription, catchError } from 'rxjs';
 import IResponseHackerNews from 'src/app/interface/IResponseHackerNews';
 
 @Injectable({
@@ -59,6 +59,7 @@ export class BlogService {
         return this.http.get<IResponseHackerNews[]>(url)
       }),
       concatMap((data) => data),
+      catchError((error:Error) => { throw new Error("si e verificato un errore " + error.message )}),
       toArray(),
       tap((data) => console.log(data)),
     );

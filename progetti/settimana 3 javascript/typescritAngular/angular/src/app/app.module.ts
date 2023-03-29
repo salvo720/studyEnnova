@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorComponent } from './components/error/error.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog-article/blog-article.component';
+import { InputSelectComponent } from './components/input-select/input-select.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { BlogArticleComponent } from './components/blog-article/blog-article.com
     ErrorComponent,
     BlogComponent,
     BlogArticleComponent,
+    InputSelectComponent,
   ],
   imports: [
     BrowserModule,

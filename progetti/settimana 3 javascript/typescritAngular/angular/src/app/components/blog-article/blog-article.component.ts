@@ -18,7 +18,7 @@ export class BlogArticleComponent implements OnInit {
   id: number = 0;
   // da sistemare il tipo
   // articleBlog$: Observable<IResponseHackerNews> = this.route.params.pipe(
-  articleBlog$: any = this.route.params.pipe(
+  articleBlog$: Observable<IResponseHackerNews>  = this.route.params.pipe(
     tap((data) => console.log("dataId : ", data)),
     // ritorna un observable di tipo iHackerNews
     // usiamo il concat map per emetterre un altro observable

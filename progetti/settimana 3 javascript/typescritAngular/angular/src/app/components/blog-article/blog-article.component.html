@@ -2,15 +2,35 @@
 
 <hr />
 <div>
-
-<div *ngFor="let article of articleBlog$ | async ">
-    <article>
-      <h2>{{ article.title }}</h2>
-      <h3>{{ article.type }}</h3>
-      <h3>{{ article.descendants }}</h3>
-      <div> <h4>{{ article.score }} -  {{ article.time | date }} -  <a [href]="article.url"> link </a> -   {{ article.by }}</h4> </div>
-    </article>
-</div>
-<hr>
+  <hr />
+  <div>
+    ordina per :
+    <app-input-select value="newer"> first option </app-input-select>
+  </div>
+  <hr />
+  <ng-container *ngIf="articleBlog$ | async as articles; else loader">
+    <ng-container *ngIf="articles != undefined && articles != null">
+      <div *ngFor="let article of articles">
+        <!-- casistica in cui e andata tutto bene  -->
+        <ng-container *ngIf="article; else error">
+          <article>
+            <h2>{{ article.title }}</h2>
+            <h3>{{ article.type }}</h3>
+            <h3>{{ article.descendants }}</h3>
+            <div>
+              <h4>
+                {{ article.score }} - {{ article.time | date }} -
+                <a [href]="article.url"> link </a> - {{ article.by }}
+              </h4>
+            </div>
+          </article>
+        </ng-container>
+        <ng-template #error> Article with Error </ng-template>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-template class="loader" #loader> Caricamento in corso ...</ng-template>
+  <hr />
   <!-- <h3>{{ articleBlog$ | async | json }}</h3> -->
-<hr />
+  <hr />
+</div>
