@@ -8,43 +8,45 @@ import { BlogService } from '../../services/blog/blog.service';
   styleUrls: ['./header.component.scss'],
   // encapsulation: ViewEncapsulation.None  // elimina del componente figlio
 })
-export class HeaderComponent implements OnInit{
-  objectMap ;
+export class HeaderComponent implements OnInit {
+  objectMap;
   blogService = inject(BlogService)
   // il decorate input per passare una variabile al componente figlio
-  @Input() navItems!:Array<string>; // dopo una variablie ! :  indica una propieta obbligatoria quindi non dobbiamo inizializzarla
+  @Input() navItems!: Array<string>; // dopo una variablie ! :  indica una propieta obbligatoria quindi non dobbiamo inizializzarla
 
   @Output() clicknav = new EventEmitter();
 
-  constructor(){
-    console.log( "construttore ")
-    console.log( "navItems : ",  this.navItems);
-    this.objectMap =  new Map([
+  countNormale : number = 0;
+
+  constructor() {
+    console.log("construttore ")
+    console.log("navItems : ", this.navItems);
+    this.objectMap = new Map([
       ["apples", 500],
       ["bananas", 300],
       ["oranges", 200]
     ]);
-  this.navItems = ['home', 'ContatoreEArticoli' , 'testPagina']
+    this.navItems = ['home', 'ContatoreEArticoli', 'testPagina', 'blog' , 'blog/data' , 'blog/data/edit']
 
   }
 
   ngOnInit(): void {
-    console.log( "OnInit ")
-    console.log( "navItems : ",  this.navItems);
+    console.log("OnInit ")
+    console.log("navItems : ", this.navItems);
 
   }
 
-  handleClickedOnNav($event:Event){
+  handleClickedOnNav($event: Event) {
     console.log($event)
   }
 
 
-  clickNavHandler () {
+  clickNavHandler() {
     this.clicknav.emit("Sono un valore emesso dalla nav ")
   }
 
-  reset () {
-    this.blogService.dato$.next(0)
+  reset() {
+    this.blogService.reset()
   }
 
 }

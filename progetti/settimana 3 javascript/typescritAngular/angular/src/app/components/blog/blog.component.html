@@ -1,19 +1,54 @@
 <p>blog works!</p>
-<h1> articles blog </h1>
-<div *ngFor="let article of articles$|async as articles">
+<h1>articles blog</h1>
+<hr />
+<div class="conter">
+  {{ countNormale }} (non reattivo) <br />
+  nota che i dati non reattivi non vengono aggironati insieme <br />
+  {{ count$ | async }} (reattivo)
+
+  <button (click)="increseDato()">aumenta</button>
+  <button (click)="decreaseDato()">diminuisci</button>
+</div>
+<!-- esempio che worka
+<hr />
+<div *ngFor="let article of articles$ | async as articles">
   <div>
     <article>
-      <h2> <a [routerLink]="'/blog/'+ article.title "> {{ article.title }} </a> </h2>
+      <h2>
+        <a [routerLink]="'/blog/' + article.title"> {{ article.title }} </a>
+      </h2>
       <h3>{{ article.data }}</h3>
       <p>{{ article.slug }}</p>
     </article>
   </div>
 </div>
-<hr>
+<hr />
+-->
+
+<!-- dati reali presi da un api  -->
+
+<hr />
+<div *ngFor="let article of observableResponse$ | async as articles">
+  <div>
+    <article>
+      <h2>
+        <p>
+          {{ article.time }} -
+          <a [routerLink]="'/blog/' + article.id"> link </a>
+        </p>
+      </h2>
+      <p>{{ article.slug }}</p>
+    </article>
+  </div>
+</div>
+<hr />
+<!-- | async :
+  effuetta il subscribe al mount del componente e aggiorna il componente se i dati cambiano
+  inoltre quando il Dom del componente viene eliminato effettua automaticamente l'unsubscribe  -->
+{{ observableResponse$ | async | json }}
+
 
 <!-- usando i beahviorSubject nei nostri services possiamo aggiornare un dato e
   aggiornarlo in tutti i componenti aggironando i dati solo in 1 punto  -->
-  <!-- ad esempio questo ci torna utile per segnare quando l'utente effettua l'autenticazione  -->
-{{ blogService.dato$ |async }}
+<!-- ad esempio questo ci torna utile per segnare quando l'utente effettua l'autenticazione  -->
 
-<button (click)="updateDato()"> aumenta  </button>

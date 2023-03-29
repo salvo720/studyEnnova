@@ -1,11 +1,15 @@
 <header>
   <nav>
-    <ul >
-      <app-nav *ngFor="let item of navItems" (clicknav)="clicknav.emit('ciao')" (clicked)="handleClickedOnNav($event)" [item]="item"></app-nav>
+    <ul>
+      <app-nav
+        *ngFor="let item of navItems"
+        (clicknav)="clicknav.emit('ciao')"
+        (clicked)="handleClickedOnNav($event)"
+        [item]="item"
+      ></app-nav>
     </ul>
   </nav>
 </header>
-
-
-{{ blogService.dato$ | async }}
-<button (click)="reset()"> reset </button>
+{{ countNormale}} ( non reattivo ) <p> nota che i dati non reattivi non vengono aggironati insieme </p> <br>
+{{ blogService.dato$ | async }} ( reattivo)
+<button (click)="reset()">reset</button> <br />

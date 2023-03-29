@@ -10,18 +10,31 @@ import { BlogService } from 'src/app/services/blog/blog.service';
 })
 export class BlogComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  blogService = inject(BlogService)
+  private blogService = inject(BlogService)
+  public count$ = this.blogService.dato$;
+  countNormale: number = 0;
+  observableResponse$ : any ;
 
   articles$ = this.route.data.pipe(
-    map((data:any)=> data["articles"])
+    map((data: any) => data["articles"])
   )
   ngOnInit(): void {
     console.log(this.route.snapshot.data)
+    this.getDataHackerNews();
   }
 
-  updateDato(){
-    const oldvalue = this.blogService.dato$.getValue();
-    this.blogService.dato$.next(oldvalue + 1)
+  increseDato() {
+    this.blogService.increase();
+    this.countNormale +=1;
+  }
+
+  decreaseDato() {
+    this.blogService.decrease();
+  }
+
+  getDataHackerNews(){
+    this.observableResponse$ = this.blogService.getHackerNewsData();
+    console.log(" this.observableResponse$" , this.observableResponse$ );
   }
 
 }

@@ -1,11 +1,11 @@
 <p>blog-article works!</p>
 
-<div *ngIf="article$|async as article;then articleElse">
+<div *ngIf="articleBlog$|async as articleBlog;then articleElse">
   <article>
-    <h2> {{ article.title}}</h2>
-    <h3> {{ article.data}}</h3>
+    <!-- <h2> {{ articleBlog.title}}</h2> -->
+    <!-- <h3> {{ articleBlog.data}}</h3> -->
   </article>
 </div>
 <ng-template #articleElse>
-  <h3> {{ article$|async|json}}</h3>
+  <!-- <h3> {{ articleBlog|async|json}}</h3> -->
 </ng-template>
