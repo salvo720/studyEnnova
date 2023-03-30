@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, AfterViewInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,10 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog-article/blog-article.component';
 import { InputSelectComponent } from './components/input-select/input-select.component';
 
+import Swiper, {
+  SwiperPluginLazyload,
+  SwiperPluginPagination,
+} from 'tiny-swiper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +52,14 @@ import { InputSelectComponent } from './components/input-select/input-select.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [ ],
-  bootstrap: [AppComponent ]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule implements AfterViewInit {
+  constructor() {}
+  ngAfterViewInit(): void {
+    Swiper.use([SwiperPluginLazyload, SwiperPluginPagination]);
+  }
+}

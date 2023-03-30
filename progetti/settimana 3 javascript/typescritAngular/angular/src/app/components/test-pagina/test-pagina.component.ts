@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, EventEmitter, HostListener, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, ViewChild } from '@angular/core';
 import IAccordion from '../../interface/iaccordion';
 import IEventAccordion from '../../interface/IEventAccordion';
+import Swiper from 'tiny-swiper'
 
 @Component({
   selector: 'app-test-pagina',
@@ -9,19 +10,29 @@ import IEventAccordion from '../../interface/IEventAccordion';
 })
 export class TestPaginaComponent implements AfterViewInit {
   isModalOpen: boolean = false;
-  objectMap;
-  date;
+  objectMap = new Map([
+    ["apples", 500],
+    ["bananas", 300],
+    ["oranges", 200]
+  ]);
+  date = new Date();
+
   constructor() {
     console.log("construttore ")
-    this.objectMap = new Map([
-      ["apples", 500],
-      ["bananas", 300],
-      ["oranges", 200]
-    ]);
-    this.date = new Date();
   }
+  // Selezioniamo un elemento dall'html del nostro componente,
+  // prima della variabile aggiungiamo il decoratore @ViewChild('nomeselettore')
+  // nomeselettore e un selettore che e formato da : #+nomeselettore
+  @ViewChild('swiperContainer')
+  // ElementRef indica che facciamo riferimento ad un element , questo ritorna un oggetto e l'elemento sara dentro la chiave nativeElement
+  // HTMLElement : e il tipo di elemento a cui facciamo riferimento
+  swieprContainer :ElementRef<HTMLElement> ;
   ngAfterViewInit(): void {
-    // throw new Error('Method not implemented.');
+    const swiper = new Swiper(this.swieprContainer.nativeElement);
+    console.log("swiper" , swiper)
+    console.log("swiper" ,     this.swieprContainer    )
+    // console.log("swiper" ,     this.swieprContainer.nativeElement    )
+    console.log("swiper" ,     this.swieprContainer.nativeElement    )
   }
 
   modalHandler($event?: Event | undefined) {
