@@ -22,11 +22,10 @@ import { ErrorComponent } from './components/error/error.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog-article/blog-article.component';
 import { InputSelectComponent } from './components/input-select/input-select.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { FormNormaleComponent } from './components/form-normale/form-normale.component';
+import { FormsModule } from '@angular/forms';
 
-import Swiper, {
-  SwiperPluginLazyload,
-  SwiperPluginPagination,
-} from 'tiny-swiper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,19 +46,19 @@ import Swiper, {
     BlogComponent,
     BlogArticleComponent,
     InputSelectComponent,
+    SliderComponent,
+    FormNormaleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule, // questo e un modulo che deve essere imporatato per usare i [(ngModel)]
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule implements AfterViewInit {
-  constructor() {}
-  ngAfterViewInit(): void {
-    Swiper.use([SwiperPluginLazyload, SwiperPluginPagination]);
-  }
+export class AppModule {
+  constructor() { }
 }

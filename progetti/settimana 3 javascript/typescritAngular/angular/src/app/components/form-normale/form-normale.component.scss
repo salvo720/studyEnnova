@@ -1,0 +1,8 @@
+input.ng-toched.ng-invalid {
+  border: 2px solid red;
+}
+
+input.ng-toched.ng-invalid + span::after {
+  content: "controlla il campo";
+  display: block;
+}

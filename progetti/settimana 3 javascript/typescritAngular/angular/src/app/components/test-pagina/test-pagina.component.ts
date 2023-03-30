@@ -8,7 +8,7 @@ import Swiper from 'tiny-swiper'
   templateUrl: './test-pagina.component.html',
   styleUrls: ['./test-pagina.component.scss']
 })
-export class TestPaginaComponent implements AfterViewInit {
+export class TestPaginaComponent {
   isModalOpen: boolean = false;
   objectMap = new Map([
     ["apples", 500],
@@ -19,20 +19,6 @@ export class TestPaginaComponent implements AfterViewInit {
 
   constructor() {
     console.log("construttore ")
-  }
-  // Selezioniamo un elemento dall'html del nostro componente,
-  // prima della variabile aggiungiamo il decoratore @ViewChild('nomeselettore')
-  // nomeselettore e un selettore che e formato da : #+nomeselettore
-  @ViewChild('swiperContainer')
-  // ElementRef indica che facciamo riferimento ad un element , questo ritorna un oggetto e l'elemento sara dentro la chiave nativeElement
-  // HTMLElement : e il tipo di elemento a cui facciamo riferimento
-  swieprContainer :ElementRef<HTMLElement> ;
-  ngAfterViewInit(): void {
-    const swiper = new Swiper(this.swieprContainer.nativeElement);
-    console.log("swiper" , swiper)
-    console.log("swiper" ,     this.swieprContainer    )
-    // console.log("swiper" ,     this.swieprContainer.nativeElement    )
-    console.log("swiper" ,     this.swieprContainer.nativeElement    )
   }
 
   modalHandler($event?: Event | undefined) {
