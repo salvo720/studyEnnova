@@ -8,7 +8,8 @@ import { TestPaginaComponent } from './components/test-pagina/test-pagina.compon
 import { ErrorComponent } from './components/error/error.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog-article/blog-article.component';
-import { FormNormaleComponent } from './components/form-normale/form-normale.component';
+import { FormsComponent } from './components/forms/forms.component';
+import { LoginOrRegisterComponent } from './components/login-or-register/login-or-register.component';
 
 const routes: Routes = [
   { title: 'Pagina Home', path: '', component: HomeComponent },
@@ -46,7 +47,8 @@ const routes: Routes = [
   },
   { title: 'Pagina ContatoreEArticoli', path: 'ContatoreEArticoli', component: PaginaContataoreEArticoliComponent },
   { title: 'Pagina testPagina', path: 'testPagina', component: TestPaginaComponent },
-  { title: 'form', path: 'form', component: FormNormaleComponent },
+  { title: 'form', path: 'form', component: FormsComponent },
+  { title: 'login ', path: 'login', component: LoginOrRegisterComponent },
   { title: '404 - Page not found ', path: '**', component: ErrorComponent },
 
 ];

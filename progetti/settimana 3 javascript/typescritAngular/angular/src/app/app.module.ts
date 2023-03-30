@@ -23,8 +23,9 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog-article/blog-article.component';
 import { InputSelectComponent } from './components/input-select/input-select.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { FormNormaleComponent } from './components/form-normale/form-normale.component';
-import { FormsModule } from '@angular/forms';
+import { FormsComponent } from './components/forms/forms.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginOrRegisterComponent } from './components/login-or-register/login-or-register.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FormsModule } from '@angular/forms';
     BlogArticleComponent,
     InputSelectComponent,
     SliderComponent,
-    FormNormaleComponent,
+    FormsComponent,
+    LoginOrRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule, // questo e un modulo che deve essere imporatato per usare i [(ngModel)]
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

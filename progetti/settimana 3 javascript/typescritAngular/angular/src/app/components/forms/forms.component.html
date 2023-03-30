@@ -1,0 +1,123 @@
+<p>form-normale works!</p>
+
+<form action="">
+  <!-- {{ model.name.error}} // per accedere agli errori  -->
+  <div>
+    <label for=""> name : </label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      autocomplete="off"
+      min="3"
+      max=""
+      [(ngModel)]="model.name"
+      required
+    />
+  </div>
+
+  <div>
+    <label for=""> surname : </label>
+    <input
+      type="text"
+      name="surname"
+      class="form-control"
+      autocomplete="off"
+      [(ngModel)]="model.surname"
+      min="3"
+      max=""
+      required
+    />
+  </div>
+
+  <div>
+    <label for=""> Favorite Color: </label>
+    <input
+      type="text"
+      class="form-control"
+      name="favoriteColor"
+      autocomplete="off"
+      [(ngModel)]="model.favoriteColor"
+      min="3"
+      max=""
+      required
+    />
+  </div>
+</form>
+
+{{ model | json }}
+
+
+<hr>
+
+<h2> Reactive Form </h2>
+
+<form action="" [formGroup]="formGroup" (ngSubmit)="submit($event)">
+  <div>
+    <label for=""> name : </label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      autocomplete="off"
+      formControlName="name"
+      required
+    />
+  </div>
+
+  <div>
+    <label for=""> surname : </label>
+    <input
+      type="text"
+      name="surname"
+      class="form-control"
+      autocomplete="off"
+      formControlName="surname"
+    />
+  </div>
+
+
+  <div>
+    <label for=""> email : </label>
+    <input
+      type="email"
+      name="surname"
+      class="form-control"
+      autocomplete="off"
+      formControlName="email"
+    />
+  </div>
+
+  <div>
+    <label for=""> password  </label>
+    <input
+      type="password"
+      class="form-control"
+      name="favoriteColor"
+      autocomplete="off"
+      formControlName="password"
+    />
+    <!-- <div *ngif="!name; else error"></div> -->
+  </div>
+
+  <div>
+    <label for=""> Favorite Color: </label>
+    <input
+      type="text"
+      class="form-control"
+      name="favoriteColor"
+      autocomplete="off"
+      formControlName="favoriteColor"
+    />
+  </div>
+  <button type="submit"> invia </button>
+</form>
+
+{{  name.value   }}
+{{  surname.value  }}
+{{  email.value  }}
+{{  password.value  }}
+{{  favoriteColor.value  }}
+<!-- per accedere agli errori  -->
+{{ "error : " + formGroup.errors | json   }}
+
