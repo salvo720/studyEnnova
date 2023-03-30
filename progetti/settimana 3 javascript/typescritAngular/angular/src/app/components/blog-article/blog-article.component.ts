@@ -16,9 +16,7 @@ export class BlogArticleComponent implements OnInit {
   // cioe se id cambia con paramrs la catena viene rieseguita , con snapshot questo non avviene
   // id: number = this.route.snapshot.params['slug'];
   id: number = 0;
-  // da sistemare il tipo
-  // articleBlog$: Observable<IResponseHackerNews> = this.route.params.pipe(
-  articleBlog$: Observable<IResponseHackerNews>  = this.route.params.pipe(
+  articleBlog$: Observable<IResponseHackerNews>  =  this.route.params.pipe(
     tap((data) => console.log("dataId : ", data)),
     // ritorna un observable di tipo iHackerNews
     // usiamo il concat map per emetterre un altro observable
@@ -42,6 +40,7 @@ export class BlogArticleComponent implements OnInit {
     console.log('initialData : ', initialData)
     console.log('articleBlog : ', this.articleBlog$)
     // this.blogService.getDataHackerNewsData
+
   }
 
 

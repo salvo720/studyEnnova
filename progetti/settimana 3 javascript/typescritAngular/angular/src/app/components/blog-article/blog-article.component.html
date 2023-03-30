@@ -10,23 +10,26 @@
   <hr />
   <ng-container *ngIf="articleBlog$ | async as articles; else loader">
     <ng-container *ngIf="articles != undefined && articles != null">
-      <div *ngFor="let article of articles">
+      <div *ngIf="articleBlog$ | async as articles;">
         <!-- casistica in cui e andata tutto bene  -->
-        <ng-container *ngIf="article; else error">
-          <article>
-            <h2>{{ article.title }}</h2>
-            <h3>{{ article.type }}</h3>
-            <h3>{{ article.descendants }}</h3>
-            <div>
-              <h4>
-                {{ article.score }} - {{ article.time | date }} -
-                <a [href]="article.url"> link </a> - {{ article.by }}
-              </h4>
-            </div>
-          </article>
-        </ng-container>
-        <ng-template #error> Article with Error </ng-template>
+        <div *ngIf="(articleBlog$ | async)?.[0] as article">
+          <ng-container *ngIf="article; else error">
+            <article>
+              <h2>{{ article.title }}</h2>
+              <h3>{{ article.type }}</h3>
+              <h3>{{ article.descendants }}</h3>
+              <div>
+                <h4>
+                  {{ article.score }} - {{ article.time | date }} -
+                  <a [href]="article.url"> link </a> - {{ article.by }}
+                </h4>
+              </div>
+            </article>
+          </ng-container>
+          <ng-template #error> Article with Error </ng-template>
+        </div>
       </div>
+
     </ng-container>
   </ng-container>
   <ng-template class="loader" #loader> Caricamento in corso ...</ng-template>
