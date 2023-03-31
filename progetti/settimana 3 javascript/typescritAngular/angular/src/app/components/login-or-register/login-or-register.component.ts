@@ -14,6 +14,11 @@ export class LoginOrRegisterComponent {
   private fb = inject(FormBuilder);
   private authServiceService = inject(AuthServiceService);
   private route = inject(ActivatedRoute)
+    // nei formgroup , bisogna sempre verificare che i formcontrol non siano nulli , in particolare nei getter ,
+  // perche propio come possiamo aggiungere dei formControll possiamo anche rimuoverli e su progetti dove
+  // lavorano piu persone si puo eliminare un form control e se non prevediamo queste casiste il codice si rompe
+  // quando si prova ad accedere a una di questi formControl
+
   formGroup = this.fb.group({
     // name: new FormControl<string>("", [Validators.required, Validators.minLength(3)]),
     // surname: new FormControl<string>("", [Validators.required, Validators.minLength(3)]),
