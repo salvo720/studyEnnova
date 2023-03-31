@@ -1,0 +1,26 @@
+Requisiti 1 
+- applciazione che permette di accedere a un catalogo multimediale composto
+ di film e seri televisive 
+ - ogni film deve contenere il maggior numero di informazioni possibbili ,
+  le quali devono permettere a un utente di approfondire una scheda di dettaglio dellos stesso 
+- un utente , vista la scheda del film , puo decidere se guardarlo oppure aggiungerlo a una 
+propia << lista  di preferiti >> che e possibile consultare in ogni momento 
+
+Requisiti 2
+- I film devono poter essere indicizzati per categoria ( film , serie , documentari , spettacoli )
+e ricercati per permettere a ogni utente di accendere facilmente ai generi ( azione , drama , commedia )
+ecc ) che preferisce senza dover visionare l'intero catalogo 
+
+// ordinamento per rating 
+- i film devono poter essere recenziti dagli utenti per poter creare un sistema di valutazione 
+
+Requisiti 3 ("pro")
+// riprendi da dove avevi lasciato 
+- il catalogo deve dare la possibbilita di riprendere uno o piu contenuti gia visti ma non ancora completati
+// possibilita di cambiare username avatar , notifiche 
+- Area profilo utente , con modifica di pochi campi ad esempio username , avatar , settings notifiche e preferneze 
+
+// team work ...            
+
+
+// ogni volta che viene aggiunta una recenzione da calcolare la media del film e aggiornarlo 
