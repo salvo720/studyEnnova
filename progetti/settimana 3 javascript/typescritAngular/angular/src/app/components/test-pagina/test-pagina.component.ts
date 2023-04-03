@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input
 import IAccordion from '../../interface/iaccordion';
 import IEventAccordion from '../../interface/IEventAccordion';
 import Swiper from 'tiny-swiper'
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-test-pagina',
@@ -16,6 +17,7 @@ export class TestPaginaComponent {
     ["oranges", 200]
   ]);
   date = new Date();
+  
 
   constructor() {
     console.log("construttore ")
@@ -34,4 +36,8 @@ export class TestPaginaComponent {
       this.isModalOpen = false;
     }
   }
+
+  // storage del browser :
+  // localstorage :  salva delle stringhe secondo la notazione chiave => valore
+
 }
