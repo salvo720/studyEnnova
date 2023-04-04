@@ -17,7 +17,7 @@ export class TestPaginaComponent {
     ["oranges", 200]
   ]);
   date = new Date();
-  
+
 
   constructor() {
     console.log("construttore ")
@@ -39,5 +39,17 @@ export class TestPaginaComponent {
 
   // storage del browser :
   // localstorage :  salva delle stringhe secondo la notazione chiave => valore
+
+
+  // git flow
+  // Docs : https://dreams.news/articles/git-flow-cos-e-e-come-funziona
+  // git status
+  // git pull origin // aggiorni respetto ad origin
+  // git checkot -b feat/... // mi sposto su un nuovo branch
+  // git commit -m "commit"
+  // git push origin brach // faccio il push su branch
+  // pull request seguendo il link di github
+  // git chechout main
+  // ricomincio da capo
 
 }
