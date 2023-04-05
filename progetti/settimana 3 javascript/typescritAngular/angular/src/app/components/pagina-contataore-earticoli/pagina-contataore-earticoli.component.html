@@ -1,5 +1,5 @@
 <!-- definiamo un osservabile come una variabile di nome count   -->
-<!-- <div *ngIf="(count$|async) as count"> -->
+<!-- <div *ngIf="(count$| async) as count"> -->
 
 <button (click)="decrement()" [disabled]="!(count > 0)" [ngStyle]="{'margin-top':'10px'}" [style.magin-top.px]="10"
   [class.disabled]="count !=1" [attr.data-count]="count">-</button>

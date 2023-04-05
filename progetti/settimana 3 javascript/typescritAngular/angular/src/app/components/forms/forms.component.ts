@@ -75,3 +75,11 @@ export class FormsComponent {
 
 }
 
+
+angular update
+
+Durante il mio percorso in accademy incentrato su angular ho imparato un nuovo modo per iniettare una dipendeza dentro un componente , passando  dalla classica iniziene dentro il costruttore , a poter iniettare le dipendeze richiamando il metodo inject su una variabile  nella foto in allegato puoi vedere la differenza tra i due tipi di codice
+
+come sempre ti lasci il rifermento al repo su github che puoi trovare al seguente link : https://github.com/salvo720/linkedin
+
+
