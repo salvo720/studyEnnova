@@ -1,39 +1,113 @@
 <p>test-pagina works!</p>
 
-<hr>
-<div> date :{{ date| date:'dd/MM/YYYY h:mm:ss':'+02'}} </div>
-<div> number :{{ 10000| number}} </div>
-<div> percent :{{ 1| percent }} </div>
-<div> pipeCapitalize : {{ 'ciao'| pipeCapitalize }} </div>
-<div> pipeDoubleNumber: {{ '22a'| pipeDoubleNumber }} </div>
+<hr />
+<div>date :{{ date | date : "dd/MM/YYYY h:mm:ss" : "+02" }}</div>
+<div>number :{{ 10000 | number }}</div>
+<div>percent :{{ 1 | percent }}</div>
+<div>pipeCapitalize : {{ "ciao" | pipeCapitalize }}</div>
+<div>pipeDoubleNumber: {{ "22a" | pipeDoubleNumber }}</div>
 <!-- <div> pipeIntL : {{ '1000' | pipeIntL : 'date'  : {  currency : ['',''   ] } }} </div> -->
 
-
-<hr>
-string : {{ 'ciao' | castArray | json }}<!-- c,i,a,o  --> <br>
-number :{{ 12 | castArray | json }}<!-- 1,2  --> <br>
-number :{{ 12.5 | castArray | json }}<!-- 1,2  --> <br>
-array : {{ ['testo1','testo2'] | castArray | json}}<!-- a,b  --> <br>
-null : {{ null | castArray | json }}<!-- [] , aggingere come ultima pipe json ci mostra l'array vuoto  --> <br>
-undefined : {{ undefined | castArray | json }}<!-- [] --> <br>
-object :{{ {'chiave1':'valore1','chaive2':'valore2'} | castArray | json }}<!-- [] --> <br>
-objectMap : {{ objectMap | castArray | json }}<!-- [] --> <br>
-<hr>
+<hr />
+string : {{ "ciao" | castArray | json
+}}<!-- c,i,a,o  -->
+<br />
+number :{{ 12 | castArray | json
+}}<!-- 1,2  -->
+<br />
+number :{{ 12.5 | castArray | json
+}}<!-- 1,2  -->
+<br />
+array : {{ ["testo1", "testo2"] | castArray | json
+}}<!-- a,b  -->
+<br />
+null : {{ null | castArray | json
+}}<!-- [] , aggingere come ultima pipe json ci mostra l'array vuoto  -->
+<br />
+undefined : {{ undefined | castArray | json
+}}<!-- [] -->
+<br />
+object :{{ { chiave1: "valore1", chaive2: "valore2" } | castArray | json
+}}<!-- [] -->
+<br />
+objectMap : {{ objectMap | castArray | json
+}}<!-- [] -->
+<br />
+<hr />
 
 <app-accordion-bootstrap></app-accordion-bootstrap>
 
-<hr>
-<app-modal [isOpen]="isModalOpen" (openModal)="modalHandler()" (closeModal)="modalHandler()" (closeModalBottoneAccetta)="modalHandler($event)"> </app-modal>
-<hr>
+<hr />
+<app-modal
+  [isOpen]="isModalOpen"
+  (openModal)="modalHandler()"
+  (closeModal)="modalHandler()"
+  (closeModalBottoneAccetta)="modalHandler($event)"
+>
+</app-modal>
+<hr />
 
 <!-- componente il piu generico possibbile  -->
 <app-slider>
-   <!-- Slides -->
-   <div class="swiper-slide"> <img src="https://www.greatwalltec.com/images/overview.jpg" alt=""/> slide 1 </div>
-   <div class="swiper-slide"> <img src="https://www.greatwalltec.com/images/overview.jpg" alt=""/> slide 2</div>
-   <div class="swiper-slide"> <img src="https://www.greatwalltec.com/images/overview.jpg" alt=""/> slide 3 </div>
-   <div class="swiper-slide"> <img src="https://www.greatwalltec.com/images/overview.jpg" alt=""/> slide 4 </div>
-   <div class="swiper-slide"> <img src="https://www.greatwalltec.com/images/overview.jpg" alt=""/> slide 5 </div>
-   ...
+  <!-- Slides -->
+  <div class="swiper-slide">
+    <img src="https://www.greatwalltec.com/images/overview.jpg" alt="" /> slide
+    1
+  </div>
+  <div class="swiper-slide">
+    <img src="https://www.greatwalltec.com/images/overview.jpg" alt="" /> slide
+    2
+  </div>
+  <div class="swiper-slide">
+    <img src="https://www.greatwalltec.com/images/overview.jpg" alt="" /> slide
+    3
+  </div>
+  <div class="swiper-slide">
+    <img src="https://www.greatwalltec.com/images/overview.jpg" alt="" /> slide
+    4
+  </div>
+  <div class="swiper-slide">
+    <img src="https://www.greatwalltec.com/images/overview.jpg" alt="" /> slide
+    5
+  </div>
+  ...
 </app-slider>
+<hr />
+
+<!-- su angular possiamo definire solo 1 direttiva su elemento html , perche sono fortemente impattatni su quel nodo
+  e perche altrimenti cozzano ( vanno in conflitto tra di loro ) , quindi e preferibili usare *ngif rispetto a [ngIf]
+  perche la prima e una direttiva strutturale.
+  Cosa dovrebbe fare angular perche ngif e false ma successivamente e true
+()
+<ng-container *ngFor="let a of [0,1,2]" *ngIf="a">
+  <div> {{a}}</div>
+</ng-container>
+
+-->
+
+<!-- questo diventa rosso perche : usare come selettore la classe .red.red e solo una regola sintattica
+per dare un valore piu alto a quella regola perche non ha senso usare come classe .red.red , infatti ci basta usare
+la classe red usandola solo 1 volta per richiara quella regola che ha un valore di 2 perche una classe con un altra classe
+ha un valore di 2 , mentre una classe da sola ha un valore di 1  -->
+<div class="blue red">colore testo</div>
+
+<hr />
+<h3>direttive</h3>
+<div [appHighlight]="'red'" appBackgroundColor="black">
+  componente con la direttiva "appHighlight"
+  <div>elemento 1</div>
+  <div>elemento 2</div>
+  <div>elemento 3</div>
+  <div>elemento 4</div>
+</div>
+<hr />
+<h3> direttiva app accordion esercizaione </h3>
+<div class="appAccordion" appAccordion="'true'">
+  <button (click)="$event" #toggleButton> toggle Elemento  </button>
+  <div> <h2> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaer</h2></div>
+  </div>
+<hr>
+
+<h3> coinmarket </h3>
+<app-coinmarket></app-coinmarket>
 <hr>
