@@ -8337,6 +8337,7 @@ java.lang.Exception: The project description file (.project) for 'ArrayCento' is
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 <<<<<<< HEAD
+<<<<<<< HEAD
 !SUBENTRY 1 org.eclipse.core.resources 4 368 2023-03-17 09:26:41.545
 !MESSAGE Resource '/SpringBootEsercizioTransporti/pom.xml' does not exist.
 !STACK 0
@@ -9728,5 +9729,7 @@ org.eclipse.core.runtime.CoreException: Launch configuration SpringBootEsercizio
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 !SUBENTRY 1 org.eclipse.jdt.launching 4 124 2023-04-05 19:47:57.331
 !MESSAGE Launch configuration SpringBootEsercizioTransportiApplication references closed project SpringBootEsercizioTransporti
+=======
+>>>>>>> 1c1387131f972924d0672c7e90043f9f2ed7ede0
 =======
 >>>>>>> 1c1387131f972924d0672c7e90043f9f2ed7ede0

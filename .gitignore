@@ -11,6 +11,8 @@
 
 # .settings/
 .metadata/
+.metadata/*
+.metadata
 # 
 
 # node_modules
