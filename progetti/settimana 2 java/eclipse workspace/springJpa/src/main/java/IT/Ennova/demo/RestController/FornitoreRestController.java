@@ -10,7 +10,7 @@ import IT.Ennova.demo.Model.Fornitore;
 public class FornitoreRestController {
 
 	@Autowired
-	iFornitoreService IFornitoreService;
+	iFornitoreService IFornitoreService; 
 	
 	@GetMapping("/fornitori")
 	public static Iterable<Fornitore> getFornitori(String[] args) {
