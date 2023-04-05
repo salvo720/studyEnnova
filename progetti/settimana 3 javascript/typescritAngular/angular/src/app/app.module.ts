@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PaginaContataoreEArticoliComponent } from './components/pagina-contataore-earticoli/pagina-contataore-earticoli.component';
@@ -26,6 +26,10 @@ import { SliderComponent } from './components/slider/slider.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginOrRegisterComponent } from './components/login-or-register/login-or-register.component';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { AccordionDirective } from './directives/Accordion/accordion.directive';
+import { CoinmarketComponent } from './components/coinmarket/coinmarket.component';
+import CacheInterceptor from './interceptors/cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,9 @@ import { LoginOrRegisterComponent } from './components/login-or-register/login-o
     SliderComponent,
     FormsComponent,
     LoginOrRegisterComponent,
+    HighlightDirective,
+    AccordionDirective,
+    CoinmarketComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +66,9 @@ import { LoginOrRegisterComponent } from './components/login-or-register/login-o
     FormsModule, // questo e un modulo che deve essere imporatato per usare i [(ngModel)]
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true } // indica che possiamo passarne piu di uno
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
