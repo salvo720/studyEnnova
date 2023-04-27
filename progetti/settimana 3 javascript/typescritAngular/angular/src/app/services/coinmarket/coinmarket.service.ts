@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from 'src/app/environments/environment';
+// import { environment } from 'src/app/environments/environment';
 import IResponseMealDb from 'src/app/interface/IResponseMealDb';
 import IResponseMeals from 'src/app/interface/IResponseMeals';
 

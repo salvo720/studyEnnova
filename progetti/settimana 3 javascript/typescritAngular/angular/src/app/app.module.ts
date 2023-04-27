@@ -30,6 +30,7 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { AccordionDirective } from './directives/Accordion/accordion.directive';
 import { CoinmarketComponent } from './components/coinmarket/coinmarket.component';
 import CacheInterceptor from './interceptors/cache.interceptor';
+import { RegexJsComponent } from './components/regex-js/regex-js.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import CacheInterceptor from './interceptors/cache.interceptor';
     HighlightDirective,
     AccordionDirective,
     CoinmarketComponent,
+    RegexJsComponent,
   ],
   imports: [
     BrowserModule,
