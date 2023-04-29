@@ -10,6 +10,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogArticleComponent } from './components/blog-article/blog-article.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { LoginOrRegisterComponent } from './components/login-or-register/login-or-register.component';
+import { RegexJsComponent } from './components/regex-js/regex-js.component';
 
 const routes: Routes = [
   { title: 'Pagina Home', path: '', component: HomeComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
   { title: 'Pagina testPagina', path: 'testPagina', component: TestPaginaComponent },
   { title: 'form', path: 'form', component: FormsComponent },
   { title: 'login ', path: 'login', component: LoginOrRegisterComponent },
+  { title: 'login ', path: 'regex', component: RegexJsComponent },
   { title: '404 - Page not found ', path: '**', component: ErrorComponent },
 
 ];

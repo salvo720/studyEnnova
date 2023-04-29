@@ -19,7 +19,7 @@ import { BehaviorSubject, Subject, tap, switchMap, debounceTime, fromEvent, thro
 export class AppComponent implements OnInit, OnChanges, AfterViewInit {
   title = 'angular app is running!';
   // navbar items per header
-  navItems = ['home', 'ContatoreEArticoli', 'testPagina', 'blog', 'blog/data', 'blog/data/edit' , 'form' , 'login']
+  navItems = ['home', 'ContatoreEArticoli', 'testPagina', 'blog', 'blog/data', 'blog/data/edit' , 'form' , 'login' , 'regex']
 
 
 
