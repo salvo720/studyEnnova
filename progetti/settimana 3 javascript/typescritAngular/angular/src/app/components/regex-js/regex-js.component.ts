@@ -93,6 +93,22 @@ export class RegexJsComponent implements OnInit {
 
 
     riferimenti :
+    in indietro back reference forward reference :
+    ad esempio :
+    1) /(io) sono \1 /gi = /io sono io /
+    2) /((io) sono \1) /gi = in questo caso il gruppo esterno e la numerazione precedente o minore del gruppo interno ,
+    quindi questo e il numero dei gruppi :
+    1) (io sono \1 ) ;
+    2) (io)
+    quindi per fare riferimento ad io il gruppo diventa ((io) sono \2)
+
+    in avanti forward reference :
+    per eseuguire il reference in avanti ad esempio (\2rosso | (verde) ) i gruppi saranno :
+    1)(\2rosso|(verde)) : \2 non e definito alla prima esecuzione quindi si andra a cercare solo per (verde) , ma alla seconda esecuzione \2 sara definito e sara verderosso
+    2)(verde)
+
+
+
 
 
     */
