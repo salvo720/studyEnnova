@@ -3,17 +3,23 @@
 <form action="" [formGroup]="formUser" (ngSubmit)="mandaFormUser()">
   <div>
     <label for="idNome"> Nome :</label> <br>
-    <input formControlName="nome" id="idNome" type="text">
+    <input formControlName="nome" minlength="3" maxlength="15" id="idNome" type="text">
+    <div *ngIf="nome.errors" class="alert alert-danger">
+      {{ Object.keys(nome.errors)}} invalid
+    </div>
   </div>
 
   <div>
     <label for="idCognome"> Cognome :</label> <br>
-    <input formControlName="cognome" id="idCognome" type="text">
+    <input formControlName="cognome" id="idCognome" minlength="3" maxlength="15" type="text">
   </div>
 
   <div>
     <label for="idEmail"> Email :</label> <br>
     <input formControlName="email" id="idEmail" type="email">
+    <div *ngIf="email.errors" class="alert alert-danger">
+      {{ email.errors["isValidEmail"].message }} : <strong> {{ email.errors["isValidEmail"].requiredchars }} </strong>
+    </div>
   </div>
 
   <div>
@@ -26,7 +32,7 @@
     <textarea formControlName="descrizione" id="idDescrizione" type="text"> </textarea>
   </div>
 
-  <button type="submit">Manda</button>
+  <button type="submit" [disabled]="!formUser.valid">Manda</button>
 
 
 </form>

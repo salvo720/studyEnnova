@@ -1,5 +1,44 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+
+function isValidEmail() {
+  return (control: AbstractControl): ValidationErrors | null => {
+    // control.value rappresenta il valore del campo che stiamo verificando
+    const email = control.value.toString();
+    // const regex = /(\w+)@(\w+)\.(\1)/;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
+    const regex = /@(\w+)\.([a-z]+)$/i;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
+    // prima regex per verifica dell'email che contega @ e .
+    // uso ^ per far si che il match deve partire dal primo carattere
+    // uso $ perche la stringa deve terminare con il gruppo specificato
+    console.log("isValidEmail:", email);
+    console.log("isValidEmail:", regex.test(email.toString()));
+
+    if (regex.test(email.toString())) {
+      return null
+    }
+    return { isValidEmail: { requiredchars: ["@", ".com"], message: "i seguenti caratteri sono richiesti" } };
+  }
+}
+
+function isStrongPassword() {
+  return (control: AbstractControl): ValidationErrors | null => {
+    // control.value rappresenta il valore del campo che stiamo verificando
+    const email = control.value.toString();
+    // const regex = /(\w+)@(\w+)\.(\1)/;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
+    const regex = /@(\w+)\.([a-z]+)$/i;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
+    // prima regex per verifica dell'email che contega @ e .
+    // uso ^ per far si che il match deve partire dal primo carattere
+    // uso $ perche la stringa deve terminare con il gruppo specificato
+    console.log("isValidEmail:", email);
+    console.log("isValidEmail:", regex.test(email.toString()));
+
+    if (regex.test(email.toString())) {
+      return null
+    }
+    return { isValidEmail: { requiredchars: ["@", ".com"], message: "i seguenti caratteri sono richiesti" } };
+  }
+}
+
 
 @Component({
   selector: 'app-regex-js',
@@ -9,6 +48,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegexJsComponent implements OnInit {
   private fb = inject(FormBuilder);
   formUser: FormGroup
+  // per usarelo nella view
+  Object = Object
 
   ngOnInit(): void {
     // build form
@@ -21,13 +62,15 @@ export class RegexJsComponent implements OnInit {
 
   buildFormUser() {
     // costruzione form con form builder
+
+    const validFiled = Validators.compose([Validators.maxLength(15), Validators.required, Validators.minLength(3)]);
     this.formUser = this.fb.group({
-      nome: ['nome', []],
-      cognome: ['cognome', []],
-      email: ['email@gmail.com', []],
-      password: ['password', []],
-      descrizione: ['descrizione', []],
-    }, [Validators.maxLength(10), Validators.required]);
+      nome: ['nome', [validFiled]],
+      cognome: ['cognome', [validFiled]],
+      email: ['email@gmail.com', [validFiled, isValidEmail()]],
+      password: ['password', [validFiled]],
+      descrizione: ['descrizione', [validFiled]],
+    },);
   }
 
   mandaFormUser() {
@@ -38,8 +81,6 @@ export class RegexJsComponent implements OnInit {
     console.log("formUser.email : ", this.email);
     console.log("formUser.password : ", this.password);
     console.log("formUser.descrizione : ", this.descrizione);
-
-    console.log(this.isValidEmail());
   }
 
   regexJs() {
@@ -181,47 +222,27 @@ export class RegexJsComponent implements OnInit {
 
 
 
-
-
-
   }
-
-
-  isValidEmail(){
-    console.log( "isValidEmail:" ,  this.email)
-    // const regex = /(\w+)@(\w+)\.(\1)/;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
-    const regex = /(^\w+)@(\w+)\.(\w+)$/;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
-    // prima regex per verifica dell'email che contega @ e .
-    // uso ^ per far si che il match deve partire dal primo carattere
-    // uso $ perche la stringa deve terminare con il gruppo specificato
-    if(regex.test(this.email.toString())){
-      return true
-    }
-    return false
-  }
-
-
 
   // getter form control
   get nome(): FormControl {
-    return this.formUser.get("nome").value as FormControl;
+    return this.formUser.get("nome") as FormControl;
   }
 
   get cognome(): FormControl {
-    return this.formUser.get("cognome").value as FormControl;
+    return this.formUser.get("cognome") as FormControl;
   }
 
   get email(): FormControl {
-    return this.formUser.get("email").value.toString() as FormControl;
+    return this.formUser.get("email") as FormControl;
   }
 
   get password(): FormControl {
-    return this.formUser.get("password").value as FormControl;
+    return this.formUser.get("password") as FormControl;
   }
 
   get descrizione(): FormControl {
-    return this.formUser.get("descrizione").value as FormControl;
+    return this.formUser.get("descrizione") as FormControl;
   }
-
 
 }
