@@ -13,29 +13,44 @@ function isValidEmail() {
     console.log("isValidEmail:", email);
     console.log("isValidEmail:", regex.test(email.toString()));
 
-    if (regex.test(email.toString())) {
+    if (regex.test(email)) {
       return null
     }
-    return { isValidEmail: { requiredchars: ["@", ".com"], message: "i seguenti caratteri sono richiesti" } };
+    return { isValidEmail: { requiredchars: " 1)@  2).", message: "la tua email deve contenere : " } };
   }
 }
 
 function isStrongPassword() {
   return (control: AbstractControl): ValidationErrors | null => {
+    const minLenght: number = 8;
     // control.value rappresenta il valore del campo che stiamo verificando
-    const email = control.value.toString();
-    // const regex = /(\w+)@(\w+)\.(\1)/;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
-    const regex = /@(\w+)\.([a-z]+)$/i;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
-    // prima regex per verifica dell'email che contega @ e .
-    // uso ^ per far si che il match deve partire dal primo carattere
-    // uso $ perche la stringa deve terminare con il gruppo specificato
-    console.log("isValidEmail:", email);
-    console.log("isValidEmail:", regex.test(email.toString()));
+    const password = control.value.toString();
 
-    if (regex.test(email.toString())) {
-      return null
+    if (password.length < minLenght) {
+      return { isStrongPassword: { message: "Errore la lunghezza minima richeista e 8" } };
     }
-    return { isValidEmail: { requiredchars: ["@", ".com"], message: "i seguenti caratteri sono richiesti" } };
+
+    let regex = /([a-z])/;
+    if (!(regex.test(password))) {
+      return { isStrongPassword: { message: "Errore la password deve contenere un almeno un carattere minuscolo" } };
+    }
+
+    regex = /([A-Z])/;
+    if (!(regex.test(password))) {
+      return { isStrongPassword: { message: "Errore la password deve contenere un almeno un carattere maiuscolo" } };
+    }
+
+    regex = /([0-9])/;
+    if (!(regex.test(password))) {
+      return { isStrongPassword: { message: " Errore la password deve contenere un almeno un numero" } };
+    }
+
+    regex = /([!%^&*()-,+=:-?.])/;
+    if (!(regex.test(password))) {
+      return { isStrongPassword: { message: "Errore la password deve contenere un almeno un carattere speciale come : !%^&*()-,+=:-?." } };
+    }
+    console.log("tutte le regex passate !!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    return null
   }
 }
 
@@ -68,7 +83,7 @@ export class RegexJsComponent implements OnInit {
       nome: ['nome', [validFiled]],
       cognome: ['cognome', [validFiled]],
       email: ['email@gmail.com', [validFiled, isValidEmail()]],
-      password: ['password', [validFiled]],
+      password: ['Prova123!"', [validFiled, isStrongPassword()]],
       descrizione: ['descrizione', [validFiled]],
     },);
   }
