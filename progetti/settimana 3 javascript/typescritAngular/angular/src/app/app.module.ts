@@ -31,6 +31,7 @@ import { AccordionDirective } from './directives/Accordion/accordion.directive';
 import { CoinmarketComponent } from './components/coinmarket/coinmarket.component';
 import CacheInterceptor from './interceptors/cache.interceptor';
 import { RegexJsComponent } from './components/regex-js/regex-js.component';
+import { ErrorControlSwitchCaseComponent } from './components/error-control-switch-case/error-control-switch-case.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { RegexJsComponent } from './components/regex-js/regex-js.component';
     AccordionDirective,
     CoinmarketComponent,
     RegexJsComponent,
+    ErrorControlSwitchCaseComponent,
   ],
   imports: [
     BrowserModule,

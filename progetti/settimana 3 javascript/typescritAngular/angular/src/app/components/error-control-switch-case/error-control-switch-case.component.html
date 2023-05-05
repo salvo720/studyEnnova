@@ -1,0 +1,5 @@
+<container-element *ngIf="control.errors" [ngSwitch]="Object.keys(control.errors)">
+  <div *ngSwitchCase="'required'" class="alert alert-danger"> il campo {{ controlName }} richiesto * </div>
+  <div *ngSwitchCase="'minlength'" class="alert alert-danger"> il campo {{ controlName }} ha lunghezza minima : {{ control.errors["minlength"].requiredLength }} , la tua lunghezza attuale è : {{  control.errors["minlength"].actualLength }} </div>
+  <div *ngSwitchCase="'maxlength'" class="alert alert-danger"> il campo {{ controlName }} ha lunghezza massima : {{ control.errors["maxlength"].requiredLength }} , la tua lunghezza attuale è : {{  control.errors["maxlength"].actualLength }} </div>
+</container-element>

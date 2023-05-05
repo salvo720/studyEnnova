@@ -2,37 +2,38 @@
 
 <form action="" [formGroup]="formUser" (ngSubmit)="mandaFormUser()">
   <div>
-    <label for="idNome"> Nome :</label> <br>
+    <label for="idNome"> Nome* :</label> <br>
     <input formControlName="nome" minlength="3" maxlength="15" id="idNome" type="text">
-    <div *ngIf="nome.errors" class="alert alert-danger">
-      {{ Object.keys(nome.errors) }} invalid
-    </div>
+    <!-- una possibile soluzione per mostrare gli errori  -->
+    <app-error-control-switch-case [control]="nome" [controlName]="'nome'"></app-error-control-switch-case>
   </div>
 
   <div>
-    <label for="idCognome"> Cognome :</label> <br>
+    <label for="idCognome"> Cognome* :</label> <br>
     <input formControlName="cognome" id="idCognome" minlength="3" maxlength="15" type="text">
+    <app-error-control-switch-case [control]="cognome" [controlName]="'cognome'"></app-error-control-switch-case>
   </div>
 
   <div>
-    <label for="idEmail"> Email :</label> <br>
+    <label for="idEmail"> Email* :</label> <br>
     <input formControlName="email" id="idEmail" type="email">
     <div *ngIf="email.errors" class="alert alert-danger">
-      {{ email.errors["isValidEmail"].message }} <strong > {{  email.errors['isValidEmail'].requiredchars  }} </strong>
+      {{ email.errors["isValidEmail"].message }} <strong> {{ email.errors['isValidEmail'].requiredchars }} </strong>
     </div>
   </div>
 
   <div>
-    <label for="idPassword"> Password :</label> <br>
+    <label for="idPassword"> Password* :</label> <br>
     <input formControlName="password" id="idPassword" type="password">
     <div *ngIf="password.errors" class="alert alert-danger">
-      <strong > {{  password.errors["isStrongPassword"].message  }} </strong>
+      <strong> {{ password.errors["isStrongPassword"].message }} </strong>
     </div>
   </div>
 
   <div>
-    <label for="idDescrizione"> Descrizione :</label> <br>
+    <label for="idDescrizione"> Descrizione* :</label> <br>
     <textarea formControlName="descrizione" id="idDescrizione" type="text"> </textarea>
+    <app-error-control-switch-case [control]="descrizione" [controlName]="'descrizione'"></app-error-control-switch-case>
   </div>
 
   <button type="submit" [disabled]="!formUser.valid">Manda</button>

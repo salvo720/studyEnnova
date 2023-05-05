@@ -1,55 +1,60 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import IRegExpAndError from 'src/app/interface/IRegExpAndError';
+import IRegExpError from 'src/app/interface/IRegExpError';
+
+// il codice di questo componente segue la guard condiction
 
 function isValidEmail() {
   return (control: AbstractControl): ValidationErrors | null => {
     // control.value rappresenta il valore del campo che stiamo verificando
-    const email = control.value.toString();
+    const email:string = control.value.toString();
     // const regex = /(\w+)@(\w+)\.(\1)/;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
-    const regex = /@(\w+)\.([a-z]+)$/i;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
+    const regex:RegExp = /@(\w+)\.([a-z]+)$/i;  // questa regola non funziona perche fopo aver fatto match , il gruppo sara equivalente alla stringa del match meglio definire le regole ogni volta
     // prima regex per verifica dell'email che contega @ e .
     // uso ^ per far si che il match deve partire dal primo carattere
     // uso $ perche la stringa deve terminare con il gruppo specificato
     console.log("isValidEmail:", email);
     console.log("isValidEmail:", regex.test(email.toString()));
 
-    if (regex.test(email)) {
-      return null
+    if (!regex.test(email)) {
+      return { isValidEmail: { requiredchars: " @ e .", message: "la tua email deve contenere : " } };
     }
-    return { isValidEmail: { requiredchars: " 1)@  2).", message: "la tua email deve contenere : " } };
+
+    return null
   }
 }
 
 function isStrongPassword() {
+  const errors : IRegExpError = {
+    minLength: { message: "Errore la lunghezza minima richeista e 8" },
+    lowerCase: { message: "Errore la password deve contenere un almeno un carattere minuscolo" },
+    upperCase: { message: "Errore la password deve contenere un almeno un carattere maiuscolo" },
+    number: { message: " Errore la password deve contenere un almeno un numero" },
+    specialChars: { message: "Errore la password deve contenere un almeno un carattere speciale come : !%^&*()-,+=:-?." },
+  };
+
   return (control: AbstractControl): ValidationErrors | null => {
     const minLenght: number = 8;
     // control.value rappresenta il valore del campo che stiamo verificando
-    const password = control.value.toString();
+    const password : string = control.value?.toString() || '';
 
-    if (password.length < minLenght) {
-      return { isStrongPassword: { message: "Errore la lunghezza minima richeista e 8" } };
+    if (password.length < minLenght) return { isStrongPassword: errors['minLength'] };
+
+    const regexes : IRegExpAndError[]  = [
+      { regex: /([a-z])/, error: errors['lowerCase'] },
+      { regex: /([A-Z])/, error: errors['upperCase'] },
+      { regex: /([0-9])/, error: errors['number'] },
+      { regex: /([!%^&*()-,+=:-?.])/, error: errors['specialChars'] },
+    ];
+
+    for (const { regex, error } of regexes) {
+      if (!(regex.test(password))) {
+        return { isStrongPassword: error };
+      }
     }
 
-    let regex = /([a-z])/;
-    if (!(regex.test(password))) {
-      return { isStrongPassword: { message: "Errore la password deve contenere un almeno un carattere minuscolo" } };
-    }
-
-    regex = /([A-Z])/;
-    if (!(regex.test(password))) {
-      return { isStrongPassword: { message: "Errore la password deve contenere un almeno un carattere maiuscolo" } };
-    }
-
-    regex = /([0-9])/;
-    if (!(regex.test(password))) {
-      return { isStrongPassword: { message: " Errore la password deve contenere un almeno un numero" } };
-    }
-
-    regex = /([!%^&*()-,+=:-?.])/;
-    if (!(regex.test(password))) {
-      return { isStrongPassword: { message: "Errore la password deve contenere un almeno un carattere speciale come : !%^&*()-,+=:-?." } };
-    }
-    console.log("tutte le regex passate !!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    console.log("tutte le regex passate !!!!!!!!!!!!!!!!!!!!!!!!!!!!!", ", password : ", password)
     return null
   }
 }
@@ -85,7 +90,10 @@ export class RegexJsComponent implements OnInit {
       email: ['email@gmail.com', [validFiled, isValidEmail()]],
       password: ['Prova123!"', [validFiled, isStrongPassword()]],
       descrizione: ['descrizione', [validFiled]],
-    },);
+    });
+
+    console.log("formUser" ,this.nome);
+
   }
 
   mandaFormUser() {
@@ -113,6 +121,7 @@ export class RegexJsComponent implements OnInit {
     3.1) g : indica global e effettuala la ricerca su tette le corrispondenze che ci sono , se non viene usato si ferma alla prima corrispondenza
     3.2) i : indica case insensitive , ovevero la distinzione della stessa lettera tra miauscolo e minuoscolo  e disattiva , se non vienne usato e attiva
     3.3) m : indica che la ricerca  , qunado si cerca su fine ella linea come il $ , deve essere fatta su piu linee
+
 
     4) meta caratteri :
     4.1) . : che non seleziona i cartetti . ma tutti i caratteri e anche gli spazi ad eccezzione dei caratteri di new line
@@ -201,8 +210,6 @@ export class RegexJsComponent implements OnInit {
     oppure puoi farla cosi: (http| https)?(:\/\/)?(w{3}\.)([a-z]|[0-9]|[\-\.]+)([a-z]+)
 
 
-
-
     10) word boundaries o limiti di parole :
     \b : prima della parola cercata deve esserci uno spazio ouna tabulazione e anche dopo
     \b ciao: prima della parola cercata deve esserci uno spazio ouna tabulazione   , e la c deve essere il primo carattere della parola
@@ -231,11 +238,6 @@ export class RegexJsComponent implements OnInit {
     prende il ritorno a capo
 
     */
-
-
-
-
-
 
   }
 
