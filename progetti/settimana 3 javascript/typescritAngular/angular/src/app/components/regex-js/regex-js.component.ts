@@ -27,6 +27,7 @@ function isValidEmail() {
 
 function isStrongPassword() {
   const errors : IRegExpError = {
+    // tipoErrore : { messaggio di errore }
     minLength: { message: "Errore la lunghezza minima richeista e 8" },
     lowerCase: { message: "Errore la password deve contenere un almeno un carattere minuscolo" },
     upperCase: { message: "Errore la password deve contenere un almeno un carattere maiuscolo" },
